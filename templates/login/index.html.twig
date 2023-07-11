@@ -1,0 +1,38 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# ... #}
+
+{% block body %}
+    
+    <section class="l-contenedor">
+        <form class="c-formulario" action="{{ path('app_login') }}" method="post">
+            <h1>LOGIN</h1>
+            <div class="l-inputForm">
+                <div class="c-cajaDatos">
+                    <label for="username"><img src="{{asset('/imagenes/iconos/email.png')}}"></label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}">
+                </div>
+    
+                <div class="c-cajaDatos">
+                    <label for="password"><img src="{{asset('/imagenes/iconos/lock.png')}}"></label>
+                    <input type="password" id="password" name="_password">
+                </div>
+            </div>
+    
+            {# Reedirección del usuario cuando el login es exitoso #}
+            <input type="hidden" name="_target_path" value="/gestion"> 
+
+            <div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button class="c-botonForm" type="submit">Entrar</button>
+            </div>
+
+            <a href="{{path('app_register')}}">Registro</a>
+
+            {% if error %}
+            <span class="g-error">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+            {% endif %}
+        </form>
+    </section>
+{% endblock %}

@@ -29,6 +29,9 @@ class Prescripcion
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $motivo = null;
 
+    #[ORM\ManyToOne(inversedBy: 'medicacion')]
+    private ?Paciente $paciente = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Prescripcion
     public function setMotivo(?string $motivo): static
     {
         $this->motivo = $motivo;
+
+        return $this;
+    }
+
+    public function getPaciente(): ?Paciente
+    {
+        return $this->paciente;
+    }
+
+    public function setPaciente(?Paciente $paciente): static
+    {
+        $this->paciente = $paciente;
 
         return $this;
     }

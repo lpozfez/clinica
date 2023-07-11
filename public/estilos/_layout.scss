@@ -1,0 +1,53 @@
+//---LAYOUT---
+
+header{
+    grid-area: header;
+    //height: 25%;
+}
+
+.l-contenedor{
+
+    height: 100%;
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+
+    &--doble{
+        justify-content: space-around;
+    }
+
+    &--gestion{
+        display: flex;
+        //grid-template-columns: 10% 90%;
+        //grid-template-areas: "menu" "seccion";
+        justify-content: flex-start;
+        //align-items: flex-start;
+    }
+
+    &--parte{
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+
+.l-inputForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.l-menu{
+    display: flex;
+    flex-direction: column;
+    //justify-content: flex-start;
+    //align-items: flex-start;
+    width: 15%;
+    height: 100%;
+}
+
+//-----------------------------------------

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TipoConsultaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,6 +21,14 @@ class TipoConsulta
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $duracion = null;
+
+    #[ORM\OneToMany(mappedBy: 'tipo', targetEntity: Consulta::class)]
+    private Collection $consultas;
+
+    public function __construct()
+    {
+        $this->consultas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -45,6 +55,36 @@ class TipoConsulta
     public function setDuracion(?\DateTimeInterface $duracion): static
     {
         $this->duracion = $duracion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Consulta>
+     */
+    public function getConsultas(): Collection
+    {
+        return $this->consultas;
+    }
+
+    public function addConsulta(Consulta $consulta): static
+    {
+        if (!$this->consultas->contains($consulta)) {
+            $this->consultas->add($consulta);
+            $consulta->setTipo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConsulta(Consulta $consulta): static
+    {
+        if ($this->consultas->removeElement($consulta)) {
+            // set the owning side to null (unless already changed)
+            if ($consulta->getTipo() === $this) {
+                $consulta->setTipo(null);
+            }
+        }
 
         return $this;
     }

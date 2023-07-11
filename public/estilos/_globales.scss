@@ -1,0 +1,35 @@
+//---ESTILOS GLOBALES---
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display: grid;
+    //grid-template-rows: 10.3% 88%;
+    height: 100%;
+    
+    grid-template-areas: "header" 
+                        "main";
+    grid-template-rows: 16.5%;
+
+    background-color: $primario;
+    background-image: url(../imagenes/fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+.g-error{
+    color: $alerta;
+}
+
+
+//--------------------------------------------------------

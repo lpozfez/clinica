@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+    <section class="l-contenedor">
+        
+
+        {{ form_start(registrationForm, {'attr': {'class': 'c-formulario'}}) }}
+            <h1>Registro</h1>
+            <div class="l-inputForm">
+                <div class="c-cajaDatos c-cajaDatos--registro">
+                    {{ form_row(registrationForm.email) }}
+                </div>
+                
+                <div class="c-cajaDatos c-cajaDatos--registro">
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: "Contraseña"
+                    }) }}
+                </div>
+            </div>
+
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn c-botonForm">Registrarme</button>
+
+            <a href="{{path('app_login')}}">Iniciar Sesión</a>
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger g-error" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+        {{ form_end(registrationForm) }}
+    </section>
+{% endblock %}

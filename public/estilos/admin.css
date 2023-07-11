@@ -1,0 +1,14 @@
+/*ESTILOS DE EASY ADMIN-- INFO SACADA DE https://symfonycasts.com/screencast/easyadminbundle/assets#play*/
+
+/*Color de la columna de EasyAdmin*/
+:root { --sidebar-bg: #98beaf; }
+/*Color de los iconos de EasyAdmin*/
+:root { --sidebar-menu-icon-color: rgb(235, 232, 232); }
+/*Color de los subtítulos de EasyAdmin*/
+:root { --sidebar-menu-header-color: #4a5e56; }
+/*Color del título de EasyAdmin*/
+:root { --sidebar-logo-color: #4a5e56; }
+
+
+
+/*--sidebar-logo-color

@@ -1,0 +1,70 @@
+//---------CABECERA DE LA WEB----------
+.c-cabecera{
+    //grid-area: menu;
+
+    background-color: #ffffff;
+    border-color: $primario;
+    border-width: 1px;
+    border-style: solid;
+
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.c-cabecera h1{
+    margin-left: 15px;
+    color: $enfasis;
+}
+
+.c-cabecera div.c-titulo{
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.c-cabecera div.c-datosUsu{
+    margin-right: 30px;
+    font-size: 12px;
+}
+
+.c-cabecera em{
+    color: $enfasis;
+}
+
+.c-cabecera p.c-fecha{
+    color: $primario;
+    font-size: 11px;
+}
+
+//---------MENÚ VERTICAL----------
+.c-menu{
+    background-color: $enfasis;
+    height: 100%;
+    z-index: 1;
+}
+/*
+.c-menu ul{
+    width: 100%;
+}*/
+
+.c-menu  li {
+    padding: 25px;
+    list-style: none;
+}
+
+.c-menu li:hover{
+    background-color: $primario;
+}
+
+.c-menu li a{
+    text-decoration: none;
+    color: white;
+}
+
+//-----------------------------------------
