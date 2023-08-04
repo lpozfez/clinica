@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página pricipal{% endblock %}
+
+{% block body %}
+<section class="l-contenedor l-contenedor--doble">
+    <div class="c-tarjeta">
+        <label for="tCitas" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis citas</label>
+        <a href="{{path('app_citas')}}"><div id="tCitas" class="c-tarjeta--body g-p--2 g--shadow-3"></div> </a>
+    </div>
+    <div class="c-tarjeta">
+        <label for="tPrescripciones" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis prescripciones</label>
+        <a href="{{path('app_prescripcion')}}"><div id="tPrescripciones" class="c-tarjeta--body g-p--2 g--shadow-3"></div> </a> 
+    </div>
+    <div class="c-tarjeta">
+        <label for="tDatos" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis datos</label>
+        <a href="{{path('app_datos')}}"><div id="tDatos" class="c-tarjeta--body g-p--2 g--shadow-3"></div></a>
+    </div>    
+</section>
+{% endblock %}

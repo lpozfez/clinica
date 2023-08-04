@@ -37,6 +37,8 @@ security:
          - { path: ^/admin, roles: ROLE_MEDICO }
          - { path: ^/profile, roles: ROLE_ADMINISTRATIVO }
          - { path: ^/profile, roles: ROLE_USER }
+        # Los usuarios sin loguear pueden acceder a login
+        #- { path: ^/, roles: PUBLIC_ACCESS }
         # - { path: '^/api', roles: [IS_AUTHENTICATED_FULLY] }
     #Jerarquia de roles: La Dirección puede acceder a las tareas de Jefatura y Jefatura puede acceder a JefaturaAdjunta, pero no al revés.
     role_hierarchy:

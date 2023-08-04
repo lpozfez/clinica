@@ -7,7 +7,7 @@
     
     <section class="l-contenedor">
         <form class="c-formulario" action="{{ path('app_login') }}" method="post">
-            <h1>LOGIN</h1>
+            <h1>Inicio de sesión</h1>
             <div class="l-inputForm">
                 <div class="c-cajaDatos">
                     <label for="username"><img src="{{asset('/imagenes/iconos/email.png')}}"></label>
@@ -21,7 +21,7 @@
             </div>
     
             {# Reedirección del usuario cuando el login es exitoso #}
-            <input type="hidden" name="_target_path" value="/gestion"> 
+            <input type="hidden" name="_target_path" value="/perfil"> 
 
             <div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

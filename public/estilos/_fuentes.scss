@@ -1,0 +1,14 @@
+@mixin textos(){
+    font-family:'Poppins', sans-serif;
+    color: black;
+}
+
+@mixin titulos(){
+    font-family:'Poppins', sans-serif;
+    color: $enfasis;
+}
+
+@mixin subtitulos(){
+    font-family:'Poppins', sans-serif;
+    color: $titulosAdmin;
+}

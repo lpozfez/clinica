@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consulta{% endblock %}
+
+{% block body %}
+<section class="l-contenedor l-contenedor--medico">
+    {#MENÚ EN PESTAÑAS#}
+    <nav class="c-menu">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-consulta-tab" data-bs-toggle="tab" data-bs-target="#nav-consulta" type="button" role="tab" aria-controls="nav-consulta" aria-selected="true">Pasar consulta</button>
+          <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
+          <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
+          <button class="nav-link" id="nav-datos-tab" data-bs-toggle="tab" data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos" aria-selected="false">Base de datos</button>
+        </div>
+    </nav>
+    {#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
+    <div class="tab-content" id="nav-tabContent">
+        {#PASAR CONSULTA#}
+        <div class="tab-pane fade show active l-contenedor l-contenedor--consulta" id="nav-consulta" role="tabpanel" aria-labelledby="nav-consulta-tab">
+            <div class="c-cabeceraDatos">
+                <form action="post" id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
+                    <fieldset>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre">
+                    </fieldset>
+                    <fieldset>
+                        <label for="ap1">Primer apellido</label>
+                        <input type="text" name="ap1">
+                    </fieldset>   
+                    <fieldset>
+                        <label for="ap2">Segundo apellido</label>
+                        <input type="text" name="ap2">
+                    </fieldset>
+                    <fieldset>
+                        <label for="dni">DNI</label>
+                        <input type="text" name="dni">
+                    </fieldset>
+                    <fieldset>
+                        <label for="seguro">Seguro médico</label>
+                        <input type="checkbox" name="seguro" id="seguro">
+                    </fieldset>
+                    <fieldset>
+                        <label for="tarjeta">Tarjeta</label>
+                        <input type="text" name="tarjeta">
+                    </fieldset>
+                    <fieldset>
+                        <label for="tipoConsulta">Tipo de consulta</label>
+                        <input type="checkbox" name="tipoConsulta" id="tipoConsulta">
+                    </fieldset>
+                </form>
+
+                <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
+            </div>
+            <div class="c-bodyDatos">
+                <div>
+                    <label for="notasConsulta">Notas médicas</label>
+                    <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
+                </div>
+                <div>
+                    <form action="post" id="medicacionConsulta">
+                        <fieldset>
+                            <label for="medicamento">Medicamento</label>
+                            <input type="text" name="medicamento">
+                        </fieldset>
+                        <fieldset>
+                            <label for="posologia">Posología</label>
+                            <textarea name="posologia" id="posologia" cols="30" rows="5"></textarea>
+                        </fieldset>   
+                        <fieldset>
+                            <label for="suspension">Suspensión</label>
+                            <input type="checkbox" name="suspension" id="suspension">
+                        </fieldset>
+                        <fieldset>
+                            <label for="motivo">Motivo</label>
+                            <textarea name="motivo" id="motivo" cols="30" rows="5"></textarea>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {#AGENDA#}
+        <div class="tab-pane fade l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">agenda</div>
+        {#PACIENTES#}
+        <div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
+        {#DATOS#}
+        <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>
+    </div>
+</section>
+{% endblock %}

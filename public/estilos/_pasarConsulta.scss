@@ -1,0 +1,29 @@
+//ESTILOS DE LA PÁGINA DE CONSULTA PARA EL ROL MEDICO
+.c-cabeceraDatos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+.c-cabeceraDatos img{
+    width: 15%;
+    height: auto;
+}
+
+.c-bodyDatos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.c-bodyDatos div{
+    width: 50%;
+    padding: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+}

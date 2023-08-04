@@ -42,29 +42,24 @@
     font-size: 11px;
 }
 
+//----------MENÚ EN PESTAÑAS-----------
+.c-pestania  button{
+    text-decoration: none;
+    color: $titulosAdmin;
+}
+
+
+
 //---------MENÚ VERTICAL----------
 .c-menu{
-    background-color: $enfasis;
-    height: 100%;
-    z-index: 1;
-}
-/*
-.c-menu ul{
+    //background-color: rgb(118,213,203,0.4);
     width: 100%;
-}*/
+    //z-index: 1;
+}
 
 .c-menu  li {
     padding: 25px;
     list-style: none;
-}
-
-.c-menu li:hover{
-    background-color: $primario;
-}
-
-.c-menu li a{
-    text-decoration: none;
-    color: white;
 }
 
 //-----------------------------------------

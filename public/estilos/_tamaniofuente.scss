@@ -1,0 +1,23 @@
+@media (max-width: 700px) {   
+    @for $i from 1 to 7 {
+        .g-fontsize--#{$i}\@movil {
+            font-size: (5*$i)+px;
+        }
+    }
+}
+  
+@media (min-width: 768px) {
+    @for $i from 1 to 7 {
+        .g-fontsize--#{$i}\@tablet {
+            font-size: (7*$i)+px;
+        }
+    }
+}
+  
+@media (min-width: 992px) {
+    @for $i from 1 to 7 {
+        .g-fontsize--#{$i}\@desktop {
+            font-size: (11*$i)+px;
+        }
+    }
+}

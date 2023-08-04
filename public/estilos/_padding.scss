@@ -1,0 +1,36 @@
+$paddings:(
+  "0":"0px",
+  "1":"1px",
+  "2":"6px",
+  "3":"12px",
+  "4":"20px",
+  "5":"25px"
+);
+
+@mixin Padding($size){
+    @if $size==0{
+        padding: 0.5rem;
+    }
+    @if $size==1{
+        padding: 1rem;
+    }
+    @if $size==2{
+        padding: 1.5rem;
+    }
+    @if $size==3{
+        padding: 2rem;
+    }
+    @if $size==4{
+        padding: 2.5rem;
+    }
+    @if $size==5{
+        padding: 3rem;
+    }
+}
+
+@for $i from 0 through 6 {
+    .g-p--#{$i} {
+        @include Padding($i);
+    }
+}
+

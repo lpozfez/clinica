@@ -1,18 +1,34 @@
 @import "colores";
 @import "layout";
 @import "globales";
+@import "padding";
+@import "bordes";
+@import "margin";
+@import "shadows";
+@import "sistematamanios";
+@import "tamaniofuente";
+@import "fuentes";
+
 
 //JQUERY
 @import "jquery-ui";
 @import "jquery-ui.structure";
 @import "jquery-ui.theme";
 
+//BOOTSTRAP
+@import "../bootstrap/css/bootstrap";
+@import "../bootstrap/css/bootstrap-grid";
+@import "../bootstrap/css/bootstrap-reboot";
+@import "../bootstrap/css/bootstrap-utilities";
+
 //COMPONENTES PROPIOS
 @import "formulario";
 @import "nav";
 @import "botones";
 @import "iconos";
+@import "tarjeta";
 
-
+//ESTILOS PARA PÁGINAS CONCRETAS
+@import "pasarConsulta";
 
  

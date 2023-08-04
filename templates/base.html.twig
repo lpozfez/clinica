@@ -7,10 +7,15 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('estilos/main.css') }}" media="screen">
+
+            {#<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" media="screen">#}
+            {#<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-grid.css') }}" media="screen">#}
+            {#<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-reboot.css') }}" media="screen">#}
+            {#<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-utilities.css') }}" media="screen">#}
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ include("js/_javascriptBase.html.twig") }}#}
+            {{ include("javascripts/_bootstrapJs.html.twig") }}
         {% endblock %}
     </head>
     <body>
@@ -21,7 +26,7 @@
             <nav class="c-cabecera">
                 <div class="c-titulo">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{path('app_main')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
+                        <a href="{{path('app_perfil')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
                     {% else %}
                         <a href="{{path('app_login')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
                     {% endif %}

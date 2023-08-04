@@ -12,9 +12,17 @@
     border-width: 0px;
     background-color: $primario;
     color: white;
+
+    &--formuMisDatos{
+        width: 100px;
+    }
 }
 
 button:hover{
+    background-color: $enfasis;
+}
+
+.c-botonForm--formuMisDatos :hover{
     background-color: $enfasis;
 }
 

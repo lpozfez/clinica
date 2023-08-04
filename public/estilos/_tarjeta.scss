@@ -1,0 +1,38 @@
+.c-tarjeta{
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+    &--body{
+        width: 200px;
+        height: 200px;
+        background-color: $primario;
+        border-radius: 7px;
+    }
+
+    &--head{
+        @include subtitulos;
+    }
+}
+
+#tCitas{
+    background-image: url("../imagenes/cita.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tPrescripciones{
+    background-image: url("../imagenes/prescipcion.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tDatos{
+    background-image: url("../imagenes/datosmedicos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

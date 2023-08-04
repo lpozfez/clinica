@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mis datos{% endblock %}
+
+{% block body %}
+<section class="l-contenedor l-contenedor--formulariosContitulo">
+    {#<p><img src="{{asset('/imagenes/iconos/volver.png')}}" id="volver"></p>#}
+    <h1>Mis datos</h1>
+    <form action="" method="post" id="misdatos" class="c-formulario c-formulario--vertical">
+        
+        <div class="c-conjuntoDatos">
+            <fieldset>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre">
+            </fieldset>
+            <fieldset>
+                <label for="ap1">Primer apellido</label>
+                <input type="text" name="ap1">
+            </fieldset>   
+            <fieldset>
+                <label for="ap2">Segundo apellido</label>
+                <input type="text" name="ap2">
+            </fieldset>
+            <fieldset>
+                <label for="dni">DNI</label>
+                <input type="text" name="dni">
+            </fieldset>
+            <fieldset>
+                <label for="seguro">Seguro médico</label>
+                <input type="text" name="seguro">
+            </fieldset>
+            <fieldset>
+                <label for="tarjeta">Tarjeta</label>
+                <input type="text" name="tarjeta">
+            </fieldset>
+        </div>
+
+        <div  class="c-conjuntoDatos" id="datosUser">
+            <fieldset>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </fieldset>
+            <fieldset>
+                <label for="pass">Contraseña</label>
+                <input type="password" name="pass" id="pass">
+            </fieldset>
+        </div>
+        <div>
+            <button class="c-botonForm c-botonForm--formuMisDatos" id="btnEditar">Editar</button>
+            <input class="c-botonForm c-botonForm--formuMisDatos" type="submit" name="guardarDatos" id="guardarDatos" value="Guardar">
+            <button class="c-botonForm c-botonForm--formuMisDatos" id="btnCancelar">Cancelar</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

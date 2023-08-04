@@ -1,0 +1,13 @@
+@mixin borderRadius($btl, $btr, $bbl, $bbr){
+    border-top-left-radius: $btl;
+    border-top-right-radius: $btr;
+    border-bottom-left-radius: $bbl;
+    border-bottom-right-radius: $bbr;
+}
+
+@mixin bordeCompleto($grosor, $color, $radius){
+    border-width: $grosor;
+    border-style: solid;
+    border-color: $color;
+    border-radius: $radius;
+}
