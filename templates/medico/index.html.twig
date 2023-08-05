@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Consulta{% endblock %}
-
+{% block header %} {% endblock %}
 {% block body %}
 <section class="l-contenedor l-contenedor--medico">
     {#MENÚ EN PESTAÑAS#}
+    {% if is_granted('IS_AUTHENTICATED_FULLY')%}
     <nav class="c-menu">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-consulta-tab" data-bs-toggle="tab" data-bs-target="#nav-consulta" type="button" role="tab" aria-controls="nav-consulta" aria-selected="true">Pasar consulta</button>
-          <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
-          <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
-          <button class="nav-link" id="nav-datos-tab" data-bs-toggle="tab" data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos" aria-selected="false">Base de datos</button>
+            
+            {% for rol in app.user.roles %}
+            {% if rol == 'ROLE_ADMINISTRATIVO' %}
+                <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
+                <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
+            {% else %}
+                <button class="nav-link active" id="nav-consulta-tab" data-bs-toggle="tab" data-bs-target="#nav-consulta" type="button" role="tab" aria-controls="nav-consulta" aria-selected="true">Pasar consulta</button>
+                <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
+                <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
+                <button class="nav-link" id="nav-datos-tab" data-bs-toggle="tab" data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos" aria-selected="false">
+                    <a href="{{path('admin')}}">Datos maestros</a>
+                </button>
+          {% endif %}
+                
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <p><em>Hola</em> {{ app.user.email}}</p>
+                <a href="{{path('app_logout')}}">Cerrar sesión</a>
+            {% endif %}
+
+          {% endfor %}
         </div>
     </nav>
     {#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
     <div class="tab-content" id="nav-tabContent">
+        
         {#PASAR CONSULTA#}
         <div class="tab-pane fade show active l-contenedor l-contenedor--consulta" id="nav-consulta" role="tabpanel" aria-labelledby="nav-consulta-tab">
             <div class="c-cabeceraDatos">
@@ -85,5 +103,6 @@
         {#DATOS#}
         <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>
     </div>
+    {% endif %}
 </section>
 {% endblock %}

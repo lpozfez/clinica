@@ -36,6 +36,7 @@ header{
     &--medico{
         justify-content: flex-start;
         align-content: flex-start;
+        grid-area: header;
     }
 
     &--consulta{
