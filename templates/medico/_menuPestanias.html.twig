@@ -1,0 +1,29 @@
+{#MENÚ EN PESTAÑAS#}
+<header>
+<nav class="c-menu">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        {# Según los roles mostramos al usuario unas pestañas u otras #}
+        {% for rol in app.user.roles %}
+        {# Para el rol administrativo #}
+        {% if rol == 'ROLE_ADMINISTRATIVO' %}
+            <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
+            <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
+        {% else %}{# Para el rol médico #}
+            <button class="nav-link active" id="nav-consulta-tab" data-bs-toggle="tab" data-bs-target="#nav-consulta" type="button" role="tab" aria-controls="nav-consulta" aria-selected="true">Pasar consulta</button>
+            <button class="nav-link" id="nav-agenda-tab" data-bs-toggle="tab" data-bs-target="#nav-agenda" type="button" role="tab" aria-controls="nav-agenda" aria-selected="false">Agenda</button>
+            <button class="nav-link" id="nav-pacientes-tab" data-bs-toggle="tab" data-bs-target="#nav-pacientes" type="button" role="tab" aria-controls="nav-pacientes" aria-selected="false">Pacientes</button>
+            {# Acceso a administración de datos en EasyAdmin #}
+            <button class="nav-link" id="nav-datos-tab" data-bs-toggle="tab" data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos" aria-selected="false">
+                <a href="{{path('admin')}}">Datos maestros</a>
+            </button>
+      {% endif %}
+            
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p><em>Hola</em> {{ app.user.email}}</p>
+            <a href="{{path('app_logout')}}">Cerrar sesión</a>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+</nav>
+</header>

@@ -1,0 +1,19 @@
+<header>
+    <nav class="c-cabecera">
+        <div class="c-titulo">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{path('app_perfil')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
+            {% else %}
+                <a href="{{path('app_login')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
+            {% endif %}
+            <h1>Clínica ginecológica</h1>
+        </div>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="c-datosUsu">
+                <p><em>Hola</em> {{ app.user.email}}</p>
+                <a href="{{path('app_logout')}}">Cerrar sesión</a>
+            </div>
+        {% endif %}
+    </nav>
+</header>

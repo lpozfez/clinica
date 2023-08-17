@@ -20,13 +20,15 @@
                 </div>
             </div>
     
-            {# Reedirección del usuario cuando el login es exitoso #}
+            {# Reedirección del usuario cuando el login es exitoso #} 
             <input type="hidden" name="_target_path" value="/perfil"> 
 
             <div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <button class="c-botonForm" type="submit">Entrar</button>
             </div>
+
+
 
             <a href="{{path('app_register')}}">Registro</a>
 
