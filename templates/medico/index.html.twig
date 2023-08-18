@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{#---------------------------CONTENIDO DENTRO DE LAS PESTAÑAS DE MÉDICO---------------------------------#}
 {% block cabeceras %}
 <section class="l-contenedor l-contenedor--medico">
     {{ include("medico/_menuPestanias.html.twig") }} 
@@ -16,7 +16,7 @@
         {# Para el rol administrativo #}
         {% if rol == 'ROLE_ADMINISTRATIVO' %}
             {#AGENDA#}
-            <div class="tab-pane fade l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">agenda</div>
+            <div class="tab-pane fade active l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">agenda</div>
             {#PACIENTES#}
             <div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
         {% else %}{# Para el rol médico #}
@@ -59,17 +59,17 @@
                 <div class="c-bodyDatos">
                     <div>
                         <label for="notasConsulta">Notas médicas</label>
-                        <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
+                        <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="11"></textarea>
                     </div>
                     <div>
-                        <form action="post" id="medicacionConsulta">
+                        <form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
                             <fieldset>
                                 <label for="medicamento">Medicamento</label>
                                 <input type="text" name="medicamento">
                             </fieldset>
                             <fieldset>
                                 <label for="posologia">Posología</label>
-                                <textarea name="posologia" id="posologia" cols="30" rows="5"></textarea>
+                                <textarea name="posologia" id="posologia" cols="60" rows="2"></textarea>
                             </fieldset>   
                             <fieldset>
                                 <label for="suspension">Suspensión</label>
@@ -77,7 +77,7 @@
                             </fieldset>
                             <fieldset>
                                 <label for="motivo">Motivo</label>
-                                <textarea name="motivo" id="motivo" cols="30" rows="5"></textarea>
+                                <textarea name="motivo" id="motivo" cols="60" rows="2"></textarea>
                             </fieldset>
                         </form>
                     </div>
@@ -88,8 +88,8 @@
             <div class="tab-pane fade l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">agenda</div>
             {#PACIENTES#}
             <div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
-            {#DATOS#}
-            <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>
+            {#DATOS
+            <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
         {% endif %}
         {% endfor %}
 
