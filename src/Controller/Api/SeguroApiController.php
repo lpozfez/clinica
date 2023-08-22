@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/seguro', name: 'app_seguro_api')]
-//#[IsGranted('ROLE_MEDICO')]
+#[IsGranted('ROLE_MEDICO')]
 class SeguroApiController extends AbstractController
 {
     

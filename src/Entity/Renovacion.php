@@ -20,6 +20,9 @@ class Renovacion
     #[ORM\Column(length: 255)]
     private ?string $descripcion = null;
 
+    #[ORM\ManyToOne(inversedBy: 'renovaciones')]
+    private ?Prescripcion $prescripcion = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,4 +51,32 @@ class Renovacion
 
         return $this;
     }
+
+    public function getPrescripcion(): ?Prescripcion
+    {
+        return $this->prescripcion;
+    }
+
+    public function setPrescripcion(?Prescripcion $prescripcion): static
+    {
+        $this->prescripcion = $prescripcion;
+
+        return $this;
+    }
+
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'fecha'=>$this->getFecha(),
+            'descripcion'=>$this->getDescripcion(),
+            'prescripcion'=>$this->getPrescripcion()->toArray()
+        ]; 
+    }
+
+    public function __toString(): string
+    {
+        return $this->fecha.'-'.$this->descripcion;
+    }
+
 }
