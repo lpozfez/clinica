@@ -12,11 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 #[Route('/api/user', name: 'app_user_api')]
-//#[IsGranted('ROLE_MEDICO')]
+#[IsGranted('ROLE_MEDICO')]
 class UserApiController extends AbstractController
 {
     private UserRepository $repo;
@@ -50,9 +51,9 @@ class UserApiController extends AbstractController
             if(!empty($user)){
                 $this->repo->save($user,true);
             }
-            //Capturamos el ID del user creado para incluirlo en la response
-            $id=$user->getId();
-            $data=['id'=>$id, "mensaje"=>'Usuario creado'];
+
+            //Construimos la response con el toArray y la url
+            $data=[$user->toArray(),'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
 
         } catch (Exception $e) {
@@ -68,7 +69,7 @@ class UserApiController extends AbstractController
         $user=$this->repo->find($id);
         //Comprobamos que exista
         if(empty($user)){
-            return $this->json('Usuario no encontrado', 404);
+            return $this->json('Elemento no encontrado', 404);
         }else{
             try {
                 //Cogemos los datos de la Request
@@ -86,9 +87,8 @@ class UserApiController extends AbstractController
                 if(!empty($user)){
                     $this->repo->save($user,true);
                 }
-                //Capturamos el ID del user creado para incluirlo en la response
-                $id=$user->getId();
-                $data=['id'=>$id, "mensaje"=>'Usuario modificado'];
+                //Construimos la response con el toArray y la url
+                $data=[$user->toArray(),'enlace'=>$request->getRequestUri()];
                 return $this->json($data,$status=201);
     
             } catch (Exception $e) {
@@ -105,16 +105,16 @@ class UserApiController extends AbstractController
         //Buscamos la user en BD
         $user=$this->repo->find($id);
         if(empty($user)){
-            return $this->json('Usuario no encontrado', 404);
+            return $this->json('Elemento no encontrado', 404);
         }else{
             $this->repo->remove($user, true);
-            return $this->json('Usuario borrado', 200);
+            return $this->json('Elemento borrado', 200);
         }
     }
     
     //MÉTODO RECUPERAR TODOS LOS USUARIOS
     #[Route(name:'get_users', methods:['GET'])]
-    public function getUsers():JsonResponse
+    public function getUsers(Request $request):JsonResponse
     {
         $usuarios = $this->repo->findAll(); 
         $datos = []; 
@@ -125,23 +125,27 @@ class UserApiController extends AbstractController
                 $datos[] = $usuario->toArray();
             } 
         
-            return $this->json($datos, $status=200); 
+            //Construimos la response con el toArray y la url
+            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            return $this->json($data,$status=201);
+
         }else{
-            return $this->json('Usuarios no encontrados', $status=404);
+            return $this->json('Elementos no encontrados', $status=404);
         }
     }
 
     //MÉTODO PARA RECUPERAR UN USUARIO
     #[Route('/{id}',name:'getUser', methods:['GET'])]
-    public function getUsuario(int $id):JsonResponse
+    public function getUsuario(int $id, Request $request):JsonResponse
     {
         //Traemos el user mediante la id.
        $user=$this->repo->find($id);
        if(empty($user)){
-            return $this->json('Usuario no encontrado', $status=404);
+            return $this->json('Elemento no encontrado', $status=404);
         }else{
-            $datos[] = $user->toArray();
-            return $this->json($datos, $status=200);
+            //Construimos la response con el toArray y la url
+            $data=[$user->toArray(),'enlace'=>$request->getRequestUri()];
+            return $this->json($data,$status=201);
         }
     }
 

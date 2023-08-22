@@ -211,4 +211,38 @@ class Paciente
 
         return $this;
     }
+
+    public function toArray() 
+    { 
+        if($this->getSeguro()!=null){
+            return [ 
+                'id' => $this->getId(), 
+                'nombre' =>$this->getNombre(),
+                'ap1' =>$this->getAp1(),
+                'ap2' =>$this->getAp2(),
+                'dni' =>$this->getDni(),
+                'tarjeta' =>$this->getTarjeta(),
+                'foto' =>$this->getFoto(),
+                'seguro'=>$this->getSeguro()->toArray(),
+                'user'=>$this->getUser()->toArray()
+            ];
+        }else{
+            return [ 
+                'id' => $this->getId(), 
+                'nombre' =>$this->getNombre(),
+                'ap1' =>$this->getAp1(),
+                'ap2' =>$this->getAp2(),
+                'dni' =>$this->getDni(),
+                'tarjeta' =>$this->getTarjeta(),
+                'foto' =>$this->getFoto(),
+                'seguro'=>null,
+                'user'=>$this->getUser()->toArray()
+            ];
+        }
+    }
+
+    public function __toString(): string
+    {
+        return $this->ap1." ".$this->ap2." ,".$this->nombre;
+    }
 }
