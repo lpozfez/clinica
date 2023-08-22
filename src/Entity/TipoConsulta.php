@@ -88,4 +88,18 @@ class TipoConsulta
 
         return $this;
     }
+
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'descripcion'=>$this->getDescripcion(),
+            'duracion'=>$this->getDuracion()
+        ]; 
+    }
+
+    public function __toString(): string
+    {
+        return $this->descripcion.'-'.$this->duracion;
+    }
 }
