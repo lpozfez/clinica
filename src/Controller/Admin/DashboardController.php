@@ -31,7 +31,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return[
-            MenuItem::linkToUrl('Atrás','fa fa-circle-left', $this->generateUrl('app_medico')),
+            MenuItem::linkToUrl('Atrás','fa fa-circle-left', $this->generateUrl('app_perfil')),
             MenuItem::linkToDashboard('Datos maestros', 'fa fa-home'),
             MenuItem::section('Usuarios'),
             MenuItem::linkToCrud('Usuarios', 'fa fa-user', User::class),

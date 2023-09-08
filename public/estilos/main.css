@@ -29605,6 +29605,21 @@ button:hover {
   background-size: cover;
 }
 
+#calendar {
+  width: 1100px;
+  margin: 40px auto;
+  height: 500px;
+  min-width: 800px;
+}
+
+#tab-content {
+  width: 100%;
+}
+
+#tab-pane {
+  width: 100%;
+}
+
 .c-cabeceraDatos {
   width: 100%;
   display: -webkit-box;

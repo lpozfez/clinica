@@ -1,17 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Página pricipal{% endblock %}
-{% block cabeceras %}{% endblock %}
-{% block body %}
-            
-{% for rol in app.user.roles %}
-    {% if rol == 'ROLE_MEDICO' %}
-        {{ include("medico/index.html.twig") }}
-    {% elseif rol == 'ROLE_ADMINISTRATIVO' %}
-        {{ include("medico/index.html.twig") }}
-    {% else %}
-        {{ include("perfil/_paciente.html.twig") }}
-    {% endif %}
-{% endfor %}
-
+{% block head %} 
+    {{ parent() }} {# Mantener el contenido del bloque head de la plantilla base #}
+    <title>{% block title %} Página principal | {{ parent() }} {% endblock %}</title>
 {% endblock %}
+
+
+{% block cabeceras %}{% endblock %}
+
+{% block body %}
+    {% for rol in app.user.roles %}
+        {% if rol == 'ROLE_MEDICO' %}
+            {% include("medico/index.html.twig") %}
+        {% elseif rol == 'ROLE_ADMINISTRATIVO' %}
+            {% include("medico/index.html.twig") %}
+        {% elseif rol == 'ROLE_USER' %}
+            {% include("perfil/_paciente.html.twig") %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    <!--ARCHIVOS JAVASCRIPT DE FULLCALENDAR-->
+    {{ parent() }}
+    {% include("javascripts/_calendario.html.twig") %}
+{% endblock %}
+
