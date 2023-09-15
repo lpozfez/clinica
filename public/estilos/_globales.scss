@@ -10,26 +10,23 @@ html{
     height: 100%;
 }
 
-body{
+body.pagMedico{
+    display: flex;
+}
+
+body.pagBase{
     display: grid;
     //grid-template-rows: 10.3% 88%;
     height: 100%;
-    
-    grid-template-areas: "header" 
-                        "main";
+    grid-template-areas: "cabecera" 
+                        "cuerpo";
     grid-template-rows: 16.5%;
-
     background-color: $primario;
     background-image: url(../imagenes/fondo.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
-
-header{
-    width: 100%;
-}
-
 
 .g-error{
     color: $alerta;

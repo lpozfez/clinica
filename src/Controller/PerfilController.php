@@ -13,8 +13,11 @@ class PerfilController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function index(): Response
     {
+        $bodyClass = 'pagMedico'; // Clase CSS para la página de médico y admin
         return $this->render('perfil/index.html.twig', [
+            'bodyclass' => $bodyClass,
             'controller_name' => 'PerfilController',
         ]);
     }
 }
+

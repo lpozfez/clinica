@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/paciente', name: 'app_paciente_api')]
-#[IsGranted('ROLE_MEDICO')]
+//#[IsGranted('ROLE_MEDICO')]
 class PacienteApiController extends AbstractController
 {
     private PacienteRepository $repo;
@@ -163,7 +163,7 @@ class PacienteApiController extends AbstractController
                 $datos[] = $paciente->toArray();
             } 
             //Construimos la response con el toArray y la url
-            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            $data=[$datos,['enlace'=>$request->getRequestUri()]];
             return $this->json($data,$status=201);
             
         }else{

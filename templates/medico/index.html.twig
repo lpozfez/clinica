@@ -1,15 +1,14 @@
 <!--Medico-->
-<section class="l-contenedor l-contenedor--medico">
+<section class="l-contenedor l-contenedor--medico" id="nav-tab">
+
 {% block cabeceras %}
-    <!--cabeceras-->
     {% include("medico/_menuPestanias.html.twig") %} 
 {% endblock %}
 
-<!--body-->
 {% block body %} 
-
+    
     {#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
-    <div class="tab-content l-contenedor" id="nav-tabContent">
+    <div class="tab-content l-contenedor--medico">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY')%}
         {# Según los roles mostramos al usuario unas pestañas u otras #}
@@ -25,20 +24,21 @@
         {% else %}
             <!--Para el rol médico-->
             {#PASAR CONSULTA#}
-            <div class="tab-pane fade show active l-contenedor l-contenedor--consulta" id="nav-consulta" role="tabpanel" aria-labelledby="nav-consulta-tab">
-                <div class="c-cabeceraDatos">
+            <div class="l-contenedor l-contenedor--consulta" id="nav-consulta">
+                <div class="c-cabeceraDatos" >
                     <form action="post" id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
                         <fieldset>
-                            <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre">
-                        </fieldset>
-                        <fieldset>
                             <label for="ap1">Primer apellido</label>
-                            <input type="text" name="ap1">
+                            <input  name="ap1" id="ap1" list="resultadoBusqueda">
+                            <datalist id="resultadoBusqueda"></datalist>
                         </fieldset>   
                         <fieldset>
                             <label for="ap2">Segundo apellido</label>
-                            <input type="text" name="ap2">
+                            <input type="text" name="ap2" id="ap2">
+                        </fieldset>
+                        <fieldset>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre">
                         </fieldset>
                         <fieldset>
                             <label for="dni">DNI</label>
@@ -56,15 +56,23 @@
                             <label for="tipoConsulta">Tipo de consulta</label>
                             <input type="checkbox" name="tipoConsulta" id="tipoConsulta">
                         </fieldset>
+                        <fieldset>
+                            <button type="submit">Guardar</button>
+                            <button>Cancelar</button>
+                        </fieldset>
                     </form>
 
                     <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
                 </div>
                 <div class="c-bodyDatos">
-                    <div>
-                        <label for="notasConsulta">Notas médicas</label>
-                        <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="11"></textarea>
-                    </div>
+                    <form action="post">
+                        <div>
+                            <label for="notasConsulta">Notas médicas</label>
+                            <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
+                            <button type="submit">Guardar</button>
+                            <button>Cancelar</button>
+                        </div>
+                    </form>
                     <div>
                         <form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
                             <fieldset>
@@ -73,7 +81,7 @@
                             </fieldset>
                             <fieldset>
                                 <label for="posologia">Posología</label>
-                                <textarea name="posologia" id="posologia" cols="60" rows="2"></textarea>
+                                <textarea name="posologia" id="posologia" cols="30" rows="2"></textarea>
                             </fieldset>   
                             <fieldset>
                                 <label for="suspension">Suspensión</label>
@@ -81,19 +89,21 @@
                             </fieldset>
                             <fieldset>
                                 <label for="motivo">Motivo</label>
-                                <textarea name="motivo" id="motivo" cols="60" rows="2"></textarea>
+                                <textarea name="motivo" id="motivo" cols="30" rows="2"></textarea>
                             </fieldset>
+                            <button type="submit">Guardar</button>
+                            <button>Cancelar</button>
                         </form>
                     </div>
                 </div>
             </div>
             {# FIN PASAR CONSULTA #}
             {#AGENDA#}
-            <div class="tab-pane fade l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">
+            <div class="l-contenedor" id="nav-agenda">
                 <div id="calendar"></div>
             </div>
             {#PACIENTES#}
-            <div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
+            <div class="l-contenedor" id="nav-pacientes">pacientes</div>
             {#DATOS
             <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
         {% endif %}

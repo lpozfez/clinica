@@ -1,14 +1,14 @@
 //---LAYOUT---
 
 header{
-    grid-area: header;
-    //height: 25%;
+    grid-area: cabecera;
+    width: 100%;
 }
 
 .l-contenedor{
 
     height: 100%;
-    grid-area: main;
+    grid-area: cuerpo;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -34,9 +34,12 @@ header{
     }
 
     &--medico{
+        width: 100%;
+        height: 100%;
         justify-content: flex-start;
         align-content: flex-start;
-        grid-area: header;
+        grid-area: none;
+        //display: flex;
     }
 
     &--consulta{
@@ -45,12 +48,7 @@ header{
         align-content: flex-start;
     }
 }
-/*
-.l-contenedor--formulariosContitulo p{
-    width: 90%;
-    align-self: flex-start;
-    height: 10%;
-}*/
+
 
 .l-inputForm{
     display: flex;

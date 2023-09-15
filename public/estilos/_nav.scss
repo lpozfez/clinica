@@ -43,29 +43,29 @@
     font-size: 11px;
 }
 
-//----------MENÚ EN PESTAÑAS-----------
-.c-pestania  button{
-    text-decoration: none;
-    color: $titulosAdmin;
-}
-
-
-
 //---------MENÚ VERTICAL----------
 .c-menu{
     width: 100%;
     &--menuPestanias{
+        height: 100%;
+        grid-area: cabecera;
         display: flex;
         flex-direction: row;
         padding: 8px;
         justify-content: space-between;
         align-items: center;
+        background-color: $secundario;
     }
 }
-
-.c-menu  li {
+//----------MENÚ EN PESTAÑAS-----------
+.c-menu ul.ui-widget-header{
+    background-color: $secundario;
+    border-width: 0;
+}
+.c-menu .ui-tabs .ui-tabs-nav li{
     padding: 25px;
     list-style: none;
+    background-color: $primario;
 }
 
 //-----------------------------------------

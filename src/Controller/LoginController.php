@@ -16,8 +16,9 @@ class LoginController extends AbstractController
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-        
+        $bodyClass = 'pagBase'; // Clase CSS para la página base
         return $this->render('login/index.html.twig', [
+            'bodyclass' => $bodyClass,
             'last_username' => $lastUsername,
             'error'         => $error,
         ]);

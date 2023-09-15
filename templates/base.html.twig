@@ -3,37 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="{{asset('imagenes/iconos/logoicon.png')}}">
-        <!--Base-->
         {% block head %} 
             <title>{% block title %}Clínica ginecológica{% endblock %}</title>
             {# ESTILOS #}
-            <!--Estilos-->
             {% block stylesheets %}
                 <link rel="stylesheet" href="{{ asset('estilos/main.css') }}" media="screen">
-                <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.11.0/main.min.css" rel="stylesheet">-->
             {% endblock %}
-            <!--Fin Estilos-->
         {% endblock %}
     </head>
-    <body>
+    <body class="{{ bodyclass }}">
         
-        <!--INICIO CABECERA-->
         {% block cabeceras %} 
             {{ include("_cabecera.html.twig") }}
         {% endblock %}
-        <!--FIN CABECERA-->
         
-
-        <!--INICIO CUERPO-->
         {% block body %}{% endblock %}
-        <!--FIN CUERPO-->
 
         {# JAVASCRIPTS #}
-            <!--JS-->
             {% block javascripts %}
-                {% include("javascripts/_bootstrapJs.html.twig") %}
+                {#{% include("javascripts/_bootstrapJs.html.twig") %}#}
                 {% include("javascripts/_jqueryJs.html.twig") %}
             {% endblock %}
-        <!--Fin Js-->
     </body>
 </html>
