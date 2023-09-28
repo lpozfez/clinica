@@ -68,9 +68,9 @@ class PacienteApiController extends AbstractController
                 //Guardamos el nuevo elemento
                 $this->repo->save($paciente,true);
                 //Construimos la response con el toArray y la url
-                $data=[$paciente->toArray(),'enlace'=>$request->getRequestUri()."/".$paciente->getId()];
+                $data=['paciente'=>$paciente->toArray(),'enlace'=>$request->getRequestUri()."/".$paciente->getId()];
                 return $this->json($data,$status=201);   
-                
+                                
             } catch (Exception $e) {
                 return $this->json(['Error' => $e->getMessage()], 500);
             }
@@ -123,7 +123,7 @@ class PacienteApiController extends AbstractController
                     $this->repo->save($paciente,true);
                 }
                 //Construimos la response con el toArray y la url
-                $data=[$paciente->toArray(),'enlace'=>$request->getRequestUri()];
+                $data=['paciente'=>$paciente->toArray(),'enlace'=>$request->getRequestUri()];
                 return $this->json($data,$status=201);
     
             } catch (Exception $e) {
@@ -163,7 +163,7 @@ class PacienteApiController extends AbstractController
                 $datos[] = $paciente->toArray();
             } 
             //Construimos la response con el toArray y la url
-            $data=[$datos,['enlace'=>$request->getRequestUri()]];
+            $data=['pacientes'=>$datos,'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
             
         }else{
@@ -181,7 +181,7 @@ class PacienteApiController extends AbstractController
             return $this->json('Elemento no encontrado', $status=404);
         }else{
             //Construimos la response con el toArray y la url
-            $data=[$paciente->toArray(),'enlace'=>$request->getRequestUri()];
+            $data=['paciente'=>$paciente->toArray(),'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
         }
     }

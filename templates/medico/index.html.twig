@@ -8,7 +8,7 @@
 {% block body %} 
     
     {#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
-    <div class="tab-content l-contenedor--medico">
+    <div class="tab-content l-contenedor--medico" >
 
         {% if is_granted('IS_AUTHENTICATED_FULLY')%}
         {# Según los roles mostramos al usuario unas pestañas u otras #}
@@ -25,55 +25,44 @@
             <!--Para el rol médico-->
             {#PASAR CONSULTA#}
             <div class="l-contenedor l-contenedor--consulta" id="nav-consulta">
-                <div class="c-cabeceraDatos" >
+                {#<div class="c-cabeceraDatos" >#}
+                    <h3>Datos del paciente</h3>
                     <form action="post" id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
                         <fieldset>
-                            <label for="ap1">Primer apellido</label>
-                            <input  name="ap1" id="ap1" list="resultadoBusqueda">
-                            <datalist id="resultadoBusqueda"></datalist>
-                        </fieldset>   
-                        <fieldset>
-                            <label for="ap2">Segundo apellido</label>
-                            <input type="text" name="ap2" id="ap2">
-                        </fieldset>
-                        <fieldset>
-                            <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombre">
-                        </fieldset>
-                        <fieldset>
+                            <label for="paciente">Paciente</label>
+                            <input name="paciente" id="paciente">
                             <label for="dni">DNI</label>
-                            <input type="text" name="dni">
+                            <input type="text" name="dni" placeholder="DNI">
                         </fieldset>
-                        <fieldset>
+                        <div class="c-medioForm">
                             <label for="seguro">Seguro médico</label>
-                            <input type="checkbox" name="seguro" id="seguro">
-                        </fieldset>
-                        <fieldset>
-                            <label for="tarjeta">Tarjeta</label>
-                            <input type="text" name="tarjeta">
-                        </fieldset>
-                        <fieldset>
+                            <select name="seguro" id="seguro"></select>
                             <label for="tipoConsulta">Tipo de consulta</label>
-                            <input type="checkbox" name="tipoConsulta" id="tipoConsulta">
-                        </fieldset>
-                        <fieldset>
-                            <button type="submit">Guardar</button>
-                            <button>Cancelar</button>
-                        </fieldset>
-                    </form>
-
-                    <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
-                </div>
-                <div class="c-bodyDatos">
-                    <form action="post">
-                        <div>
-                            <label for="notasConsulta">Notas médicas</label>
-                            <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
-                            <button type="submit">Guardar</button>
-                            <button>Cancelar</button>
+                            <select name="tipoConsulta" id="tipoConsulta"></select>
+                        </div>
+                        <div class="c-medioForm">
+                            <input type="file" name="addFotoPaciente" id="addFotoPaciente">
+                            <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
+                            <fieldset>
+                                <button>Cancelar</button>
+                                <button type="submit">Guardar</button>
+                            </fieldset>
                         </div>
                     </form>
-                    <div>
+
+                {#</div>#}
+                {#<div class="c-bodyDatos">#}
+                        <h3>Notas médicas</h3>
+                        <form action="post">
+                            <div>
+                                <label for="notasConsulta">Notas médicas</label>
+                                <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
+                                <button type="submit">Guardar</button>
+                                <button>Cancelar</button>
+                            </div>
+                        </form>
+                    {#<div>#}
+                        <h3>Medicación</h3>
                         <form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
                             <fieldset>
                                 <label for="medicamento">Medicamento</label>
@@ -94,8 +83,8 @@
                             <button type="submit">Guardar</button>
                             <button>Cancelar</button>
                         </form>
-                    </div>
-                </div>
+                    {#</div>#}
+                {#</div>#}
             </div>
             {# FIN PASAR CONSULTA #}
             {#AGENDA#}

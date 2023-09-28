@@ -22,11 +22,10 @@
     
     &--consulta{
         flex-direction: row;
-        width:85%;
-        height: auto;
+        width:90%;
         flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
+        justify-content:space-around;
+        align-content: center;
         background-color: $primario;
     }
 
@@ -76,7 +75,22 @@
 
 .c-formulario--consulta fieldset{
     border-width: 0px;
-    width: 300px;
+    width: 100%;
+}
+
+div.c-medioForm{
+    width: 40%;
+    //height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.c-formulario--consulta img{
+    width: 200px;
+    height: 250px;
 }
 
 /*
