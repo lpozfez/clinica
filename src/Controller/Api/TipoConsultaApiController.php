@@ -114,7 +114,7 @@ class TipoConsultaApiController extends AbstractController
             } 
     
             //Construimos la response con el toArray y la url
-            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            $data=['tiposConsultas'=>$datos,'enlace'=>$request->getRequestUri()];
             return $this->json($data, $status=201);
         }else{
             return $this->json('Elementos no encontrados', $status=404);
@@ -132,7 +132,7 @@ class TipoConsultaApiController extends AbstractController
         }else{
             $datos[] = $tipoConsulta->toArray();
             //Construimos la response con el toArray y la url
-            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            $data=['tipoConsulta'=>$datos,'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
         }
     }

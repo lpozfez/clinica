@@ -108,7 +108,7 @@ class SeguroApiController extends AbstractController
             } 
     
             //Construimos la response con el toArray y la url
-            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            $data=['seguros'=>$datos,'enlace'=>$request->getRequestUri()];
             return $this->json($data, $status=201);
         }else{
             return $this->json('Elementos no encontrados', $status=404);
@@ -126,7 +126,7 @@ class SeguroApiController extends AbstractController
         }else{
             $datos[] = $seguro->toArray();
             //Construimos la response con el toArray y la url
-            $data=[$datos,'enlace'=>$request->getRequestUri()];
+            $data=['seguro'=>$datos,'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
         }
     }
