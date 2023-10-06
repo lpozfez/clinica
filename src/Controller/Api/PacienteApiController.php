@@ -149,6 +149,27 @@ class PacienteApiController extends AbstractController
             return $this->json('Elemento borrado', 200);
         }
     }
+
+    //MÉTODO PARA RECUPERAR UN PACIENTE POR DNI
+    #[Route('/{dni}', name: 'buscar_paciente_por_dni', methods: ['GET'])]
+    public function buscarPacientePorDni(string $dni, Request $request): JsonResponse
+    {
+        $criterios = [
+            'dni' => $dni, // busca por DNI
+        ];
+        $paciente = $this->repo->findOneBy($criterios);
+
+        // Si se encuentran pacientes, devuélvelos en formato JSON
+        if ($paciente) {
+            $data=['paciente'=>$paciente->toArray(),'enlace'=>$request->getRequestUri()];
+            return $this->json($data,$status=201);
+            
+        } else {
+            // Si no se encuentran pacientes, devuelve un mensaje de error
+            return $this->json(['error' => 'No se encontraron pacientes con el DNI proporcionado'], Response::HTTP_NOT_FOUND);
+        }
+    }
+
     
     //MÉTODO RECUPERAR TODOS LOS ELEMENTOS
     #[Route(name:'get_pacientes', methods:['GET'])]

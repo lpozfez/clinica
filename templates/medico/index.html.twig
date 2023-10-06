@@ -27,16 +27,17 @@
             <div class="l-contenedor l-contenedor--consulta" id="nav-consulta">
                 {#<div class="c-cabeceraDatos" >#}
                     <h3>Datos del paciente</h3>
-                    <form action="post" id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
+                    <div  id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
                         <fieldset>
                             <label for="paciente">Paciente</label>
                             <input name="paciente" id="paciente">
                             <label for="dni">DNI</label>
                             <input type="text" name="dni" id="dni" placeholder="DNI">
+                            <button id="buscar">Buscar</button>
                         </fieldset>
                         <div class="c-medioForm">
                             <label for="seguro">Seguro médico</label>
-                            <select name="seguro" id="seguro"></select>
+                            <input type="text" name="seguro" id="seguro">
                             <label for="tipoConsulta">Tipo de consulta</label>
                             <select name="tipoConsulta" id="tipoConsulta"></select>
                         </div>
@@ -45,10 +46,10 @@
                             <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
                             <fieldset>
                                 <button>Cancelar</button>
-                                <button type="submit">Guardar</button>
+                                <input value="Guardar" type="submit">
                             </fieldset>
                         </div>
-                    </form>
+                    </div>
 
                 {#</div>#}
                 {#<div class="c-bodyDatos">#}
