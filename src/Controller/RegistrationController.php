@@ -30,6 +30,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $bodyClass = 'pagBase'; // Clase CSS para la página base
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -57,6 +58,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            'bodyclass' => $bodyClass,
             'registrationForm' => $form->createView(),
         ]);
     }

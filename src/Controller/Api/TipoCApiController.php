@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('api/tipoconsulta', name: 'app_tipo_consulta_api')]
 //#[IsGranted('ROLE_MEDICO')]
-class TipoConsultaApiController extends AbstractController
+class TipoCApiController extends AbstractController
 {
     private TipoConsultaRepository $repo;
 

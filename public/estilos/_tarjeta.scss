@@ -1,6 +1,5 @@
 .c-tarjeta{
     height: 600px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +15,23 @@
 
     &--head{
         @include subtitulos;
+    }
+
+    &--presentacion{
+        width: 600px;
+        height: 400px;
+        margin: 10px;
+
+        &--head{
+            width: 500px;
+            height: 10%;
+            font-size: 15px;
+            text-align: center;
+        }
+        &--body{
+            width: 500px;
+            height: 90%;
+        }
     }
 }
 

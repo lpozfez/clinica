@@ -2,17 +2,10 @@ $(function () {
   const pacientes = [];
   const pacientesObj=[];
   var buscar=$("button#buscar");
+  const notasNuevas=$('#notasConsulta');
+  const notasPrevias=$('#notasanteriores');
 
-  //Traer seguros
-  /*
-  $.getJSON("https://localhost:8000/api/seguro", function (data) {
-    console.log(data["seguros"]);
-    $.each(data["seguros"], function (i, v) {
-      var option=$("<option>").val(data["seguros"][i].id).text(data["seguros"][i].nombre).attr("id", "seguro-"+i).appendTo($("#seguro"));
-      option[0].objtipoConsulta=data["seguros"][i]; 
-    });
-  });*/
-
+//---------------------------------------------Datos del paciente--------------------------------------------------
   //Traer tipos de consulta
   $.getJSON("https://localhost:8000/api/tipoconsulta", function (data) {
     $.each(data["tiposConsultas"], function (i, v) {
@@ -41,16 +34,16 @@ $(function () {
     $("#dni").val("");
     $("#seguro").val("");
     $("#paciente").val("");
-
+    $("#foto-paciente").attr("src", "/imagenes/mujer.png");
+    let pacienteSeleccionado='';
     if(typeof(selectedPaciente)==="object" && selectedPaciente!==null){
       selectedPaciente=selectedPaciente.nombreCompleto();
     }
 
     // Recorremmos el array de pacientes para encontrar el paciente seleccionado
     for (let i = 0; i < pacientes.length; i++) {
-      debugger
       if (pacientesObj[i].nombreCompleto() ===  selectedPaciente ) {
-        const pacienteSeleccionado = pacientesObj[i];
+        pacienteSeleccionado=pacientesObj[i];
         // Rellena los campos del formulario con los datos del paciente
         if ($("#dni").val() === "") {
           $("#dni").val(pacienteSeleccionado.dni);
@@ -61,7 +54,24 @@ $(function () {
         if ($("#paciente").val() === "") {
           $("#paciente").val(pacientesObj[i].nombreCompleto());
         }
+        $("#fotoPaciente").attr("src", pacienteSeleccionado.foto);
       }
+    }
+
+    let idPAc=pacienteSeleccionado.id;
+    if(!notasPrevias.textContent){
+      $.getJSON("https://localhost:8000/api/paciente/notas/"+idPAc, function (data) {
+        //Tratamos las fechas
+        const fechaNota = deJsonADate(data["notas_clinicas"][0].date);
+        const fecha=formateaFecha(fechaNota);
+        //Creamos las notas y las añadimos a una lista
+        const notas = fecha+" -- "+data["notas_clinicas"][1];
+        console.log(notas);
+        let listado= $("<ul>");
+        let nuevoParrafo = $("<li>").text(notas);
+        listado.append(nuevoParrafo);
+        notasPrevias.append(listado);
+      });
     }
   }
 
@@ -120,13 +130,11 @@ $(function () {
         data["paciente"].dni,
         data["paciente"].foto,
         data["paciente"].user,
-        data["paciente"].seguro,
-        data["paciente"]
+        data["paciente"].seguro
       );
       //pacientes.push(paciente);
       pacientes.push(paciente.nombreCompleto());
       pacientesObj.push(paciente);
-      debugger
       rellenarFormulario(paciente);
     });
   }
@@ -143,5 +151,23 @@ $(function () {
     ev.preventDefault();
     obtenerDni();
   });
+
+
+//---------------------------------------------Notas médicas del paciente-----------------------------------------------
+  function addNotas(){
+    debugger
+    let contenido=notasNuevas.val();
+    console.log(contenido);
+    let nuevoItem = $("<li>").text(contenido);
+    if(notasNuevas.children()==''){
+      let nuevoListado= $("<ul>");
+      nuevoListado.append(nuevoItem);
+      notasPrevias.append(nuevoListado);
+    }else{
+      notasPrevias.children()[0].append(nuevoItem);
+    }
+  }
+
+  $('#guardaNota').click(addNotas());
 
 });

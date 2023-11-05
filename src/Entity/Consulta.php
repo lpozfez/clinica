@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ConsultaRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ConsultaRepository::class)]
@@ -13,7 +14,7 @@ class Consulta
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 300, nullable: true)]
     private ?string $notasClinicas = null;
 
     #[ORM\ManyToOne(inversedBy: 'consulta')]
@@ -22,6 +23,9 @@ class Consulta
 
     #[ORM\ManyToOne(inversedBy: 'consultas')]
     private ?TipoConsulta $tipo = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $fecha = null;
 
     public function getId(): ?int
     {
@@ -63,4 +67,45 @@ class Consulta
 
         return $this;
     }
+
+    public function toArray()
+    {
+
+        return [
+            'id' => $this->getId(),
+            'tipo_consulta' => $this->getTipo()->toArray(),
+            'paciente' => $this->getPaciente()->toArray(),
+            'notas' => $this->getNotasClinicas(),
+            'fecha'=>$this->getFecha()
+        ];
+    }
+
+    public function __toString(): string
+    {
+        return $this->tipo." ".$this->paciente." ".$this->fecha;
+    }
+
+
+    public function getFecha(): ?\DateTimeInterface
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(\DateTimeInterface $fecha): static
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

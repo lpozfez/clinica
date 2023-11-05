@@ -1,7 +1,10 @@
-{#{% extends 'base.html.twig' %}#}
-<!--Paciente-->
-{% block head %}{% endblock %}
-{% block cabeceras %}{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block head %} 
+    {{ parent() }} {# Mantener el contenido del bloque head de la plantilla base #}
+    <title>{% block title %} Paciente | {{ parent() }} {% endblock %}</title>
+{% endblock %}
+
 {% block body %}
 <section class="l-contenedor l-contenedor--doble">
     <div class="c-tarjeta">

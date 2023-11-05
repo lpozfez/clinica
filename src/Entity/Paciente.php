@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ConsultaRepository;
 use App\Repository\PacienteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -180,6 +181,19 @@ class Paciente
         }
 
         return $this;
+    }
+
+    public function getNotasconsultas(){
+        $consultas=$this->getConsulta();
+        $notas=[]; 
+        //Traemos las notas de cada consulta
+        foreach ($consultas as $consulta) {
+            $fechaConsulta=$consulta->getFecha();
+            $notasConsulta = $consulta->getNotasClinicas();
+            array_push($notas, $fechaConsulta, $notasConsulta);
+        }
+
+        return $notas;
     }
 
     /**

@@ -7,7 +7,7 @@
 }
 
 html{
-    height: 100%;
+    height: 100vh;
 }
 
 body.pagMedico{
@@ -17,13 +17,13 @@ body.pagMedico{
 body.pagBase{
     display: grid;
     //grid-template-rows: 10.3% 88%;
-    height: 100%;
+    height: 100vh;
     grid-template-areas: "cabecera" 
                         "cuerpo";
     grid-template-rows: 16.5%;
     background-color: $primario;
-    background-image: url(../imagenes/fondo.jpg);
-    background-repeat: no-repeat;
+    background-image: url(../imagenes/fondoCompleto.jpg);
+    background-repeat:unset;
     background-position: center center;
     background-size: cover;
 }
@@ -32,5 +32,22 @@ body.pagBase{
     color: $alerta;
 }
 
+footer{
+    background-color: $enfasis;
+    width: 100%;
+    height: 130px;
+    color: $secundario;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11.5px;
+    margin-top: 45px;
+}
 
+@media (prefers-reduced-motion: no-preference){
+    *{/*Salto de navegación suave*/
+        scroll-behavior: smooth;
+    }
+}
 //--------------------------------------------------------

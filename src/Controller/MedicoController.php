@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class MedicoController extends AbstractController
 {
     #[Route('/medico', name: 'app_medico')]
-    //#[IsGranted('ROLE_MEDICO')]
+    #[IsGranted('ROLE_MEDICO')]
     public function index(): Response
     {
         return $this->render('medico/index.html.twig', [

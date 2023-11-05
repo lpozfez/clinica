@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/paciente', name: 'app_paciente_api')]
-//#[IsGranted('ROLE_MEDICO')]
+#[IsGranted('ROLE_MEDICO')]
 class PacienteApiController extends AbstractController
 {
     private PacienteRepository $repo;
@@ -27,7 +27,7 @@ class PacienteApiController extends AbstractController
     {
         $this->repo=$repositorio;
         $this->userRepo=$userRepo;
-        $this->seguroRepo=$seguroRepo;
+        $this->seguroRepo=$seguroRepo; 
     }
 
     //MÉTODO PARA AÑADIR UN NUEVO ELEMENTO
@@ -203,6 +203,22 @@ class PacienteApiController extends AbstractController
         }else{
             //Construimos la response con el toArray y la url
             $data=['paciente'=>$paciente->toArray(),'enlace'=>$request->getRequestUri()];
+            return $this->json($data,$status=201);
+        }
+    }
+
+    //Método para traer las notas clínicas por paciente
+    #[Route('/notas/{id}',name:'getNotaspaciente', methods:['GET'])]
+    public function getNotasPaciente(int $id, Request $request):JsonResponse
+    {
+        //Traemos el paciente mediante la id.
+       $paciente=$this->repo->find($id);
+       if(empty($paciente)){
+            return $this->json('Elemento no encontrado', $status=404);
+        }else{
+            $notas=$paciente->getNotasconsultas();
+            //Construimos la response con el toArray y la url
+            $data=['notas_clinicas'=>$notas,'enlace'=>$request->getRequestUri()];
             return $this->json($data,$status=201);
         }
     }

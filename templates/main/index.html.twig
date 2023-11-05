@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block head %} 
+    {{ parent() }} {# Mantener el contenido del bloque head de la plantilla base #}
+    <title>{% block title %} Página principal | {{ parent() }} {% endblock %}</title>
+{% endblock %}
+
+{% block body %}
+    <section class="l- l-contenedor--landing">
+        <div class="c-presentacion">
+            <video type="video/mp4" width="600px" height="350px" controls src="{{asset('videos/ginecologo.mp4')}}"></video>
+            <article class="g-p--1">  
+                <h2 class="g-fontsize--2">¿Buscas un servicio de ginecología más cercano?</h2>
+                <p class="g-fontsize--1">Nuestros médicos te atenderán con la atención y confianza que buscas.</p>
+                <a href="{{path('app_register')}}"><button class="c-botonGrande">Regístrate y pide tu cita</button></a>
+            </article>
+        </div>
+        <div class="c-presentacion">
+            <div class="c-tarjeta c-tarjeta--presentacion">
+                <label  class="c-tarjeta--presentacion--head g-m--3 g-fontsize--4">Pide cita de forma rápida</label>
+                <div  class="c-tarjeta--presentacion--body g-p--2 g--shadow-3"></div>
+            </div>
+            <div class="c-tarjeta c-tarjeta--presentacion">
+                <label  class="c-tarjeta--presentacion--head g-m--3 g-fontsize--4">Accede a tus prescripciones</label>
+                <div  class="c-tarjeta--presentacion--body g-p--2 g--shadow-3"></div> 
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <p>&copy; 2023 Cereco - Todos los derechos reservados</p>
+    </footer>
+{% endblock %}

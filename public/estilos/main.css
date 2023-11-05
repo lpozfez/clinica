@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   grid-area: cabecera;
   width: 100%;
@@ -62,6 +63,17 @@ header {
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
+.l-contenedor--landing {
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -ms-flex-line-pack: none;
+      align-content: none;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  justify-items: none;
+}
 
 .l-inputForm {
   display: -webkit-box;
@@ -88,6 +100,35 @@ header {
   height: 100%;
 }
 
+.l-notas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+.l-notas--conBoton {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0px;
@@ -97,7 +138,7 @@ header {
 }
 
 html {
-  height: 100%;
+  height: 100vh;
 }
 
 body.pagMedico {
@@ -108,12 +149,12 @@ body.pagMedico {
 
 body.pagBase {
   display: grid;
-  height: 100%;
+  height: 100vh;
   grid-template-areas: "cabecera" "cuerpo";
   grid-template-rows: 16.5%;
   background-color: #bce9e3;
-  background-image: url(../imagenes/fondo.jpg);
-  background-repeat: no-repeat;
+  background-image: url(../imagenes/fondoCompleto.jpg);
+  background-repeat: unset;
   background-position: center center;
   background-size: cover;
 }
@@ -122,6 +163,30 @@ body.pagBase {
   color: #d15573;
 }
 
+footer {
+  background-color: #76d5cb;
+  width: 100%;
+  height: 130px;
+  color: #f3fdfc;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 11.5px;
+  margin-top: 45px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * { /*Salto de navegación suave*/
+    scroll-behavior: smooth;
+  }
+}
 .g-p--0 {
   padding: 0.5rem;
 }
@@ -4276,6 +4341,12 @@ a.ui-button:active,
   box-shadow: 0px 0px 5px #bce9e3;
 }
 
+/*
+@import "../bootstrap/css/bootstrap";
+@import "../bootstrap/css/bootstrap-grid";
+@import "../bootstrap/css/bootstrap-reboot";
+@import "../bootstrap/css/bootstrap-utilities";
+*/
 .c-formulario {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4317,6 +4388,8 @@ a.ui-button:active,
   -ms-flex-line-pack: center;
       align-content: center;
   background-color: #bce9e3;
+  border: 1px solid #bce9e3;
+  border-radius: 5px;
 }
 .c-formulario--detalleParte {
   -webkit-box-orient: horizontal;
@@ -4353,21 +4426,87 @@ a.ui-button:active,
   padding: 20px;
 }
 .c-formulario--datosMedicacion {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 95%;
+  height: auto;
+  margin: 0;
+  padding: 5px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: hidden;
+  border: 1px solid #bce9e3;
+  border-radius: 5px;
+}
+
+.c-columna {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 10px;
+  /*padding: 10px;*/
+  width: 90%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-x: hidden;
+}
+.c-columna--botones {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.c-columna fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 100%;
-  margin: 0;
+  padding: 10px;
+}
+
+.c-columna fieldset label {
+  text-align: right; /* Alinea los labels a la derecha */
+  margin-right: 50px;
+}
+
+.c-columna fieldset input {
+  width: 100%;
+  margin: 20px;
 }
 
 .c-formulario * {
@@ -4383,9 +4522,29 @@ a.ui-button:active,
   width: 400px;
 }
 
+.c-formulario--datosMedicacion input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+}
+
+.c-formulario--datosMedicacion input, select {
+  width: 300px;
+  height: 30px;
+}
+
 .c-formulario--consulta fieldset {
   border-width: 0px;
   width: 100%;
+}
+
+.c-formulario--consulta img {
+  width: 200px;
+  height: 250px;
+}
+
+.c-formulario--consulta input, select {
+  width: 250px;
+  height: 30px;
 }
 
 div.c-medioForm {
@@ -4404,11 +4563,6 @@ div.c-medioForm {
           justify-content: flex-start;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-}
-
-.c-formulario--consulta img {
-  width: 200px;
-  height: 250px;
 }
 
 /*
@@ -4595,8 +4749,12 @@ button:hover {
   font-size: 20px;
   border-radius: 5px;
   border-width: 0px;
-  background-color: #bce9e3;
+  background-color: #76d5cb;
   color: white;
+}
+
+.c-botonGrande:hover {
+  background-color: #bce9e3;
 }
 
 .c-botonGrande a {
@@ -4640,6 +4798,21 @@ button:hover {
   font-family: "Poppins", sans-serif;
   color: #4a5e56;
 }
+.c-tarjeta--presentacion {
+  width: 600px;
+  height: 400px;
+  margin: 10px;
+}
+.c-tarjeta--presentacion--head {
+  width: 500px;
+  height: 10%;
+  font-size: 15px;
+  text-align: center;
+}
+.c-tarjeta--presentacion--body {
+  width: 500px;
+  height: 90%;
+}
 
 #tCitas {
   background-image: url("../imagenes/cita.jpg");
@@ -4672,6 +4845,58 @@ button:hover {
 
 #tab-pane {
   width: 100%;
+}
+
+.c-notas {
+  width: 50%;
+  height: 100%;
+}
+
+.c-notas div ul {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+.c-notas div ul li {
+  margin: 7px;
+}
+
+.c-presentacion {
+  width: 100%;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.c-presentacion article {
+  background-color: #f3fdfc;
+  width: 400px;
+  height: 250px;
+  text-align: center;
+  color: #4a5e56;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .c-cabeceraDatos {

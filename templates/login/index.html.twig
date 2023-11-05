@@ -1,8 +1,6 @@
 {# templates/login/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{# ... #}
-
 {% block body %}
     
     <section class="l-contenedor">
@@ -11,12 +9,12 @@
             <div class="l-inputForm">
                 <div class="c-cajaDatos">
                     <label for="username"><img src="{{asset('/imagenes/iconos/email.png')}}"></label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}">
+                    <input type="email" id="username" name="_username" value="{{ last_username }}" required>
                 </div>
     
                 <div class="c-cajaDatos">
                     <label for="password"><img src="{{asset('/imagenes/iconos/lock.png')}}"></label>
-                    <input type="password" id="password" name="_password">
+                    <input type="password" id="password" name="_password" required>
                 </div>
             </div>
     

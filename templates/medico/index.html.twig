@@ -1,106 +1,106 @@
 <!--Medico-->
 <section class="l-contenedor l-contenedor--medico" id="nav-tab">
 
-{% block cabeceras %}
-    {% include("medico/_menuPestanias.html.twig") %} 
-{% endblock %}
+	{% block cabeceras %}
+		{% include("medico/_menuPestanias.html.twig") %}
+	{% endblock %}
 
-{% block body %} 
-    
-    {#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
-    <div class="tab-content l-contenedor--medico" >
+	{% block body %}
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY')%}
-        {# Según los roles mostramos al usuario unas pestañas u otras #}
-        {% for rol in app.user.roles %}
-        <!--Para el rol administrativo-->
-        {% if rol == 'ROLE_ADMINISTRATIVO' %}
-            {#AGENDA#}
-            <div class="tab-pane fade active l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">
-                <div id="calendar"></div>
-            </div>
-            {#PACIENTES#}
-            <div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
-        {% else %}
-            <!--Para el rol médico-->
-            {#PASAR CONSULTA#}
-            <div class="l-contenedor l-contenedor--consulta" id="nav-consulta">
-                {#<div class="c-cabeceraDatos" >#}
-                    <h3>Datos del paciente</h3>
-                    <div  id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
-                        <fieldset>
-                            <label for="paciente">Paciente</label>
-                            <input name="paciente" id="paciente">
-                            <label for="dni">DNI</label>
-                            <input type="text" name="dni" id="dni" placeholder="DNI">
-                            <button id="buscar">Buscar</button>
-                        </fieldset>
-                        <div class="c-medioForm">
-                            <label for="seguro">Seguro médico</label>
-                            <input type="text" name="seguro" id="seguro">
-                            <label for="tipoConsulta">Tipo de consulta</label>
-                            <select name="tipoConsulta" id="tipoConsulta"></select>
-                        </div>
-                        <div class="c-medioForm">
-                            <input type="file" name="addFotoPaciente" id="addFotoPaciente">
-                            <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
-                            <fieldset>
-                                <button>Cancelar</button>
-                                <input value="Guardar" type="submit">
-                            </fieldset>
-                        </div>
-                    </div>
+		{#CONTENEDORES DEL CONTENIDO DE LAS PESTAÑAS#}
+		<div class="tab-content l-contenedor--medico">
 
-                {#</div>#}
-                {#<div class="c-bodyDatos">#}
-                        <h3>Notas médicas</h3>
-                        <form action="post">
-                            <div>
-                                <label for="notasConsulta">Notas médicas</label>
-                                <textarea name="notasConsulta" id="notasConsulta" cols="30" rows="5"></textarea>
-                                <button type="submit">Guardar</button>
-                                <button>Cancelar</button>
-                            </div>
-                        </form>
-                    {#<div>#}
-                        <h3>Medicación</h3>
-                        <form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
-                            <fieldset>
-                                <label for="medicamento">Medicamento</label>
-                                <input type="text" name="medicamento">
-                            </fieldset>
-                            <fieldset>
-                                <label for="posologia">Posología</label>
-                                <textarea name="posologia" id="posologia" cols="30" rows="2"></textarea>
-                            </fieldset>   
-                            <fieldset>
-                                <label for="suspension">Suspensión</label>
-                                <input type="checkbox" name="suspension" id="suspension">
-                            </fieldset>
-                            <fieldset>
-                                <label for="motivo">Motivo</label>
-                                <textarea name="motivo" id="motivo" cols="30" rows="2"></textarea>
-                            </fieldset>
-                            <button type="submit">Guardar</button>
-                            <button>Cancelar</button>
-                        </form>
-                    {#</div>#}
-                {#</div>#}
-            </div>
-            {# FIN PASAR CONSULTA #}
-            {#AGENDA#}
-            <div class="l-contenedor" id="nav-agenda">
-                <div id="calendar"></div>
-            </div>
-            {#PACIENTES#}
-            <div class="l-contenedor" id="nav-pacientes">pacientes</div>
-            {#DATOS
-            <div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
-        {% endif %}
-        {% endfor %}
+			{% if is_granted('IS_AUTHENTICATED_FULLY')%}
+				{# Según los roles mostramos al usuario unas pestañas u otras #}
+				{% for rol in app.user.roles %}
+					<!--Para el rol administrativo-->
+					{% if rol == 'ROLE_ADMINISTRATIVO' %}
+						{#AGENDA#}
+						<div class="tab-pane fade active l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">
+							<div id="calendar"></div>
+						</div>
+						{#PACIENTES#}
+						<div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
+					{% else %}
+						<!--Para el rol médico-->
+						{#PASAR CONSULTA#}
+						<div class="l-contenedor l-contenedor--consulta" id="nav-consulta"> 
+							<h3>Datos del paciente</h3>
+							<div id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
+								<fieldset>
+									<label for="paciente">Paciente</label>
+									<input name="paciente" id="paciente">
+									<label for="dni">DNI</label>
+									<input type="text" name="dni" id="dni" placeholder="DNI">
+									<button  id="buscar">Buscar</button>
+								</fieldset>
+								<div class="c-medioForm">
+									<label for="seguro">Seguro médico</label>
+									<input type="text" name="seguro" id="seguro">
+									<label for="tipoConsulta">Tipo de consulta</label>
+									<select name="tipoConsulta" id="tipoConsulta"></select>
+								</div>
+								<div class="c-medioForm">
+									<img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
+								</div>
+							</div>
 
-    </div>
-    {% endif %}
-</section>
+							<h3>Notas médicas</h3>	
+							<div class="l-notas">
+                                <div class="l-notas l-notas--conBoton c-notas">
+                                    <h2>Nueva Nota</h2>
+                                    <textarea name="notasConsulta" id="notasConsulta" cols="50" rows="15"></textarea>
+                                    <button class="c-botonForm" id="guardaNota">Guardar Nota</button>
+									<button class="c-botonForm" id="guardaNota">Editar</button>
+                                </div>
+                                <div class="c-notas" id="notas">
+                                    <h2>Notas Anteriores</h2>
+									<div id="notasanteriores"></div>
+                                </div>
+							</div>
+					
+							<h3>Medicación</h3>
+							<form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
+								<div class="c-columna">
+									<fieldset>
+										<label for="medicamento">Medicamento</label>
+										<input type="text" name="medicamento">
+									</fieldset>
+									<fieldset>
+										<label for="posologia">Posología</label>
+										<textarea name="posologia" id="posologia"  rows="5"></textarea>
+									</fieldset>
+								
+								
+									<fieldset>
+										<label for="suspension">Suspensión</label>
+										<input type="checkbox" name="suspension" id="suspension">
+									</fieldset>
+									<fieldset>
+										<label for="motivo">Motivo</label>
+										<textarea name="motivo" id="motivo"  rows="5"></textarea>
+									</fieldset>
+								</div>
+								<div class="c-columna c-columna--botones">
+									<button class="c-botonForm" type="submit">Guardar Consulta</button>
+									<button class="c-botonForm">Cancelar</button>
+								</div>
+							</form>
+						</div>
+						{# FIN PASAR CONSULTA #}
+						{#AGENDA#}
+						<div class="l-contenedor" id="nav-agenda">
+							<div id="calendar"></div>
+						</div>
+						{#PACIENTES#}
+						<div class="l-contenedor" id="nav-pacientes">pacientes</div>
+						{#DATOS
+						<div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
+					{% endif %}
+				{% endfor %}
+
+		</div>
+		{% endif %}
+	</section>
 
 {% endblock %}

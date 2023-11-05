@@ -1,20 +1,37 @@
 <header>
     <!--Cabecera Base-->
     <nav class="c-cabecera">
-        <div class="c-titulo">
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="c-titulo">
                 <a href="{{path('app_perfil')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
-            {% else %}
-                <a href="{{path('app_login')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
-            {% endif %}
-            <h1>Clínica ginecológica</h1>
-        </div>
+                <h1>Cereco</h1>
+            </div>
+        {% else %}
+            <div class="c-titulo">
+                <a href="{{path('app_main')}}"><img src="{{asset('/imagenes/iconos/logo.png')}}"></a>
+                <h1>Cereco</h1>
+            </div>
+        {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {#
+            {% if  %}
+                <div class="c-datosUsu">
+                    <a href="{{path('app_perfil')}}">Perfil</a>
+                </div>
+            {% endif %}
+            #}
+
             <div class="c-datosUsu">
                 <p><em>Hola</em> {{ app.user.email}}</p>
                 <a href="{{path('app_logout')}}">Cerrar sesión</a>
             </div>
+
+        {% else %}
+            <div class="c-datosUsu">
+                <a href="{{path('app_login')}}">Iniciar sesión</a>
+            </div>
         {% endif %}
+
     </nav>
 </header>

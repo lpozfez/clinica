@@ -9,7 +9,7 @@ header{
 
     height: 100%;
     grid-area: cuerpo;
-    display: flex;
+    display: flex ;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -47,6 +47,13 @@ header{
         justify-content: flex-start;
         align-content: flex-start;
     }
+
+    &--landing{
+        justify-content: none;
+        align-content: none;
+        align-items: none;
+        justify-items: none;
+    }
 }
 
 
@@ -64,5 +71,22 @@ header{
     width: 15%;
     height: 100%;
 }
+
+.l-notas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    &--conBoton{
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+
+
 
 //-----------------------------------------
