@@ -13,6 +13,7 @@ class MedicoController extends AbstractController
     #[IsGranted('ROLE_MEDICO')]
     public function index(): Response
     {
+        
         return $this->render('medico/index.html.twig', [
             'controller_name' => 'MedicoController',
         ]);

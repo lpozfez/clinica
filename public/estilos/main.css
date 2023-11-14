@@ -27,6 +27,7 @@ header {
   justify-items: center;
 }
 .l-contenedor--doble {
+  height: 100vh;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -129,6 +130,14 @@ header {
           justify-content: space-evenly;
 }
 
+@media screen and (max-width: 800px) {
+  .l-notas {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0px;
@@ -4565,10 +4574,10 @@ div.c-medioForm {
       align-content: flex-start;
 }
 
-/*
-.c-conjuntoDatos{
-    background-color: red;
-}*/
+.c-conjuntoDatos fieldset {
+  text-align: right;
+}
+
 .c-cajaDatos {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4728,19 +4737,23 @@ div.c-medioForm {
   font-size: 15px;
   border-radius: 5px;
   border-width: 0px;
-  background-color: #bce9e3;
+  background-color: #76d5cb;
   color: white;
 }
 .c-botonForm--formuMisDatos {
   width: 100px;
 }
 
+input[type=submit]:hover {
+  background-color: #bce9e3;
+}
+
 button:hover {
-  background-color: #76d5cb;
+  background-color: #bce9e3;
 }
 
 .c-botonForm--formuMisDatos :hover {
-  background-color: #76d5cb;
+  background-color: #bce9e3;
 }
 
 .c-botonGrande {
@@ -4784,9 +4797,6 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 .c-tarjeta--body {
   width: 200px;
@@ -4795,6 +4805,7 @@ button:hover {
   border-radius: 7px;
 }
 .c-tarjeta--head {
+  padding-top: 50px;
   font-family: "Poppins", sans-serif;
   color: #4a5e56;
 }
@@ -4812,6 +4823,11 @@ button:hover {
 .c-tarjeta--presentacion--body {
   width: 500px;
   height: 90%;
+}
+
+.c-tarjeta--body:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #tCitas {

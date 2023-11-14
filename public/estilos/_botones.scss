@@ -10,7 +10,7 @@
     font-size: 15px;
     border-radius: 5px;
     border-width: 0px;
-    background-color: $primario;
+    background-color: $enfasis;
     color: white;
 
     &--formuMisDatos{
@@ -18,12 +18,16 @@
     }
 }
 
+input[type="submit"]:hover{
+    background-color: $primario;
+}
+
 button:hover{
-    background-color: $enfasis;
+    background-color: $primario;
 }
 
 .c-botonForm--formuMisDatos :hover{
-    background-color: $enfasis;
+    background-color: $primario;
 }
 
 .c-botonGrande{

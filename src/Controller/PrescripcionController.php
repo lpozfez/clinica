@@ -11,7 +11,9 @@ class PrescripcionController extends AbstractController
     #[Route('/prescripcion', name: 'app_prescripcion')]
     public function index(): Response
     {
+        $bodyClass = 'pagBase'; 
         return $this->render('prescripcion/index.html.twig', [
+            'bodyclass' => $bodyClass,
             'controller_name' => 'PrescripcionController',
         ]);
     }
