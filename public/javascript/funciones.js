@@ -9,8 +9,22 @@ function deJsonADate(fechaString) {
 //Función que devuelve la fecha Date() formateada
 function formateaFecha(fecha){
 
-    console.log(fecha.getDate());
-    var fechaHoraFormateada = fecha.getDate() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getFullYear() + ' ' + fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds();
+  console.log(fecha.getDate());
+  var fechaHoraFormateada = fecha.getDate() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getFullYear() + ' ' +fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds();
 
-    return fechaHoraFormateada;
+  return fechaHoraFormateada;
+}
+
+
+
+function mostrarDialogo(mensaje) {
+  // Crea un diálogo simple con el mensaje
+  $("<div>").text(mensaje).dialog({
+    modal: true,
+    buttons: {
+      Ok: function () {
+        $(this).dialog("close");
+      }
+    }
+  });
 }

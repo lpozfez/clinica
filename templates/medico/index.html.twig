@@ -60,11 +60,11 @@
 							</div>
 					
 							<h3>Medicación</h3>
-							<form action="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
+							<form action="{{ path('app_perfil') }}" method="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
 								<div class="c-columna">
 									<fieldset>
 										<label for="medicamento">Medicamento</label>
-										<input type="text" name="medicamento">
+										<input type="text" id="medicamento" name="medicamento">
 									</fieldset>
 									<fieldset>
 										<label for="posologia">Posología</label>
@@ -93,7 +93,20 @@
 							<div id="calendar"></div>
 						</div>
 						{#PACIENTES#}
-						<div class="l-contenedor" id="nav-pacientes">pacientes</div>
+						<div class="l-contenedor table-responsive" id="nav-pacientes">
+							<table class="table" id="tablaPacientes">
+								<thead>
+									<tr>
+										<th scope="col">Nombre de paciente</th>
+										<th scope="col">DNI</th>
+										<th scope="col">Seguro</th>
+										<th scope="col">Acción</th>
+										<th scope="col"><button class="btn btn-outline-success"><img src="{{asset('/imagenes/iconos/agregar.svg')}}" id="addParte" class="c-icono"></button></th>
+									</tr>
+								</thead>
+								<tbody id="tBodyPacientes"></tbody>
+							</table>
+						</div>
 						{#DATOS
 						<div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
 					{% endif %}

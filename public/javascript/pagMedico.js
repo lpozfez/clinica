@@ -5,7 +5,7 @@ $(function () {
   const notasNuevas = $("#notasConsulta");
   const notasPrevias = $("#notasanteriores");
   const btnGuardaConsulta = $("#guardar-consulta");
-  const btnCancelarConsulta = $("#cancelar-consulta");
+  //const btnCancelarConsulta = $("#cancelar-consulta");
 
 
   //---------------------------------------------Datos del paciente--------------------------------------------------
@@ -79,7 +79,9 @@ $(function () {
           listado.append(nuevoParrafo);
           notasPrevias.append(listado);
         }
-      );
+      ).error ( function (error) {
+        console.error("Error en la solicitud AJAX", error);
+      });
     }
   }
 
@@ -163,10 +165,8 @@ $(function () {
 
   /**Función para añadir una nota nueva una nota */
   function addNotas() {
-    debugger;
     let contenido = notasNuevas.val();
-    console.log(contenido);
-    let nuevoItem = $("<li>").text(contenido);
+    let nuevoItem = $("<li>").prop('id', 'ultimaNota').text(contenido);
     if (notasNuevas.children() == "") {
       let nuevoListado = $("<ul>");
       nuevoListado.append(nuevoItem);
@@ -183,7 +183,7 @@ $(function () {
     const ultimaNota = $(this)[0].lastChild.lastChild;
     console.log(ultimaNota);
     if (nuevoContenido !== null) {
-      ultimaNota.text()=nuevoContenido;
+      ultimaNota.text(nuevoContenido);
     }
   }
 
@@ -192,10 +192,94 @@ $(function () {
   notasPrevias.click(editarNota);
 
   /**Función para guardar la consuta */
-  function guardaConsulta(){
-    
+  function guardaConsulta(event){
+    debugger
+    event.preventDefault();
+
+    //Datos del formulario
+    const notaClinicas = $('#ultimaNota').text();
+    const pacienteId = pacientesObj[0].id;
+    const tConsulta = $("#tipoConsulta").val();
+    const fecha = new Date();
+    const datosConsulta = {
+      "notas_clinicas": notaClinicas,
+      "paciente_id":pacienteId,
+      "tipo_id": Number(tConsulta),
+      "fecha":fecha
+    };
+
+    // Mostrar un mensaje de progreso
+    const mensajeProgreso = $('<div>').text('Guardando datos...').appendTo('body');
+
+
+    //Medicación
+    const medicamento = $("#medicamento").val();
+    const posologia = $("#posologia").val();
+    const suspension = $("#suspension").val();
+    const motivo = $("#motivo").val();
+
+    if(medicamento && posologia){
+      datosMedicacion = {
+        'fecha': new Date(),
+        'medicamento':medicamento,
+        'posologia':posologia,
+        'suspension':suspension,
+        'motivo':motivo,
+        'paciente': pacienteId
+      }
+
+      $.ajax({
+        url: 'https://localhost:8000/api/prescripcion',
+        method: 'POST',
+        contentType: "application/json",
+        data:  JSON.stringify(datosMedicacion),
+        dataType: "json",
+        success: function (response) {
+          const respuesta = {
+            mensaje: 'Datos guardados con éxito.',
+          };
+          //Respuesta
+          mostrarDialogo(respuesta.mensaje);
+        },
+        error: function (error) {
+          console.error("Error en la solicitud AJAX", error);
+          alert($('<span>').text('Error al enviar los datos.'));
+        }
+      });
+    }
+
+    // Realizamos la solicitud POST
+    $.ajax({
+      url: "https://localhost:8000/api/consulta",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(datosConsulta),
+      dataType: "json",
+      beforeSend: function () {
+        // Se ejecuta antes de enviar la solicitud
+        mensajeProgreso.show();
+      },
+      success: function (respuesta) {
+        console.log(respuesta);
+        mensajeProgreso.hide();
+        alert("Datos guardados con éxito.");
+      },
+      error: function (error) {
+        console.error("Error en la solicitud AJAX", error);
+        mensajeProgreso.hide();
+        alert("Error al enviar los datos.");
+      },
+    });
+
+
+
   }
 
-  btnGuardaConsulta.click()
+  btnGuardaConsulta.click(guardaConsulta);
+
+
+
+
+
 
 });

@@ -2,9 +2,12 @@
 
 {% block title %}Registro{% endblock %}
 
+{% block cabeceras %}
+{% endblock %}
+
 {% block body %}
     <section class="l-contenedor">
-        {{ form_start(registrationForm, {'attr': {'class': 'c-formulario'}}) }}
+        {{ form_start( registrationForm, {'attr': {'class': 'c-formulario'}} ) }}
             <h1>Registro</h1>
             <div class="l-inputForm">
                 <div class="c-cajaDatos c-cajaDatos--registro">

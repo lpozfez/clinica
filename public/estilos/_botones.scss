@@ -50,4 +50,15 @@ button:hover{
     color: white;
 }
 
+.c-boton--icono{
+    border: 0;
+    width: 40px;
+    height: 40px;
+    background-color: $primario;
+    
+        &--warning{
+            background-color: $alerta;
+        }
+}
+
 //-----------------------------------------
