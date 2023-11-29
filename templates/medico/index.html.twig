@@ -92,6 +92,7 @@
 						<div class="l-contenedor" id="nav-agenda">
 							<div id="calendar"></div>
 						</div>
+
 						{#PACIENTES#}
 						<div class="l-contenedor table-responsive" id="nav-pacientes">
 							<table class="table" id="tablaPacientes">
@@ -106,7 +107,56 @@
 								</thead>
 								<tbody id="tBodyPacientes"></tbody>
 							</table>
+
+							<!-- Modal de Edición -->
+							<div class="modal modal-md fade h-auto" id="modalEdicion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<p class="modal-title">Editar paciente:</p>
+										</div>
+										<div class="modal-body">
+
+										<form id="formularioEdicion" class="text-center">
+											<div class="col-10">
+											<label for="formDni" class="form-label">DNI</label>
+											<input type="text" class="form-control  form-control form-control-sm" id="formDni" readonly>
+											</div>
+											<div class="col-10">
+											<label for="formNombre" class="form-label">Nombre</label>
+											<input type="text" class="form-control  form-control form-control-sm" id="formNombre">
+											</div>
+											<div class="col-10">
+											<label for="" class="form-label">Apellido 1</label>
+											<input type="text" class="form-control  form-control form-control-sm" id="formap1">
+											</div>
+											<div class="col-10">
+											<label for="" class="form-label">Apellido 2</label>
+											<input type="text" class="form-control form-control form-control-sm"  id="formap2">
+											</div>
+											<div class="col-10">
+											<label for="" class="form-label">Tarjeta</label>
+											<input type="text" class="form-control form-control form-control-sm"  id="formtarjeta">
+											</div>
+											<div class="col-10">
+											<label for="formSeguro" class="form-label">Seguro</label>
+											<select name="formSeguro" id="formSeguro"></select>
+											</div>
+											<div class="col-10">
+											<label for="fotoPaciente" class="form-label">Foto</label>
+											<input type="file" name="fotoPaciente" id="formFoto"/>
+											</div>
+											<div class="modal-footer">
+											<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+											</div>
+										</form>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
 						</div>
+	
 						{#DATOS
 						<div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
 					{% endif %}

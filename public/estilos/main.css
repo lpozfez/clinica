@@ -29419,6 +29419,11 @@ progress {
   border-radius: 5px;
 }
 
+.modalForm {
+  width: 800px;
+  height: 80vh;
+}
+
 .c-columna {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29741,8 +29746,8 @@ button:hover {
 
 .c-boton--icono {
   border: 0;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #bce9e3;
 }
 .c-boton--icono--warning {
