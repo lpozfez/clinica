@@ -100,6 +100,6 @@ class TipoConsulta
 
     public function __toString(): string
     {
-        return $this->descripcion.'-'.$this->duracion;
+        return $this->descripcion;//.'-'.$this->duracion;
     }
 }

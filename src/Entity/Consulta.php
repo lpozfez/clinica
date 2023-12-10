@@ -82,7 +82,7 @@ class Consulta
 
     public function __toString(): string
     {
-        return $this->tipo." ".$this->paciente." ".$this->fecha;
+        return $this->tipo." ".$this->paciente." ".$this->fecha->format('d-m-Y H:i:s');
     }
 
 
