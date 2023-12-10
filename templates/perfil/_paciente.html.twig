@@ -7,17 +7,27 @@
 
 {% block body %}
 <section class="l-contenedor l-contenedor--doble">
-    <div class="c-tarjeta">
-        <label for="tCitas" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis citas</label>
-        <a href="{{path('app_citas')}}"><div id="tCitas" class="c-tarjeta--body g-p--2 g--shadow-3"></div> </a>
+
+    <div class="card c-cartas">
+        <img src="{{asset('imagenes/cita.jpg')}}" class="card-img-top" alt="">
+        <a href="{{path('app_citas')}}" class="p-1 btn btn-primary ">Mis citas</a>
     </div>
-    <div class="c-tarjeta">
-        <label for="tPrescripciones" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis prescripciones</label>
-        <a href="{{path('app_prescripcion')}}"><div id="tPrescripciones" class="c-tarjeta--body g-p--2 g--shadow-3"></div> </a> 
+
+    <div class="card c-cartas">
+        <img src="{{asset('imagenes/prescripcion.png')}}" class="card-img-top" alt="">
+        <a href="{{path('app_prescripcion')}}" class="p-1 btn btn-primary ">Mis prescripciones</a>
     </div>
-    <div class="c-tarjeta">
-        <label for="tDatos" class="c-tarjeta--head g-m--3 g-fontsize--4">Mis datos</label>
-        <a href="{{path('app_datos')}}"><div id="tDatos" class="c-tarjeta--body g-p--2 g--shadow-3"></div></a>
-    </div>    
+
+    <div class="card c-cartas">
+        <img src="{{asset('imagenes/datosmedicos.jpg')}}" class="card-img-top" alt="">
+        <a href="{{path('app_datos')}}" class="p-1 btn btn-primary ">Mis datos</a>
+    </div>
+    
 </section>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2023 Cereco - Todos los derechos reservados</p>
+</footer>
 {% endblock %}

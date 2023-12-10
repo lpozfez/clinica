@@ -1,0 +1,16 @@
+.c-cartas{
+    width: 18rem;
+    height: 300px;
+}
+
+.c-cartas a {
+    width: 100%;
+    background-color: $enfasis;
+    border-color: $enfasis;
+}
+
+.c-cartas a:hover{
+    background-color: $primario;
+    border-color: $primario;
+
+}

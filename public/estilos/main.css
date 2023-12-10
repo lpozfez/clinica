@@ -27,7 +27,7 @@ header {
   justify-items: center;
 }
 .l-contenedor--doble {
-  height: 100vh;
+  height: 80vh;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -173,10 +173,10 @@ body.pagBase {
 }
 
 footer {
-  background-color: #76d5cb;
+  background-color: #f3fdfc;
   width: 100%;
   height: 130px;
-  color: #f3fdfc;
+  color: #76d5cb;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29603,6 +29603,22 @@ div.c-medioForm {
   text-align: center;
 }
 
+.c-cartas {
+  width: 18rem;
+  height: 300px;
+}
+
+.c-cartas a {
+  width: 100%;
+  background-color: #76d5cb;
+  border-color: #76d5cb;
+}
+
+.c-cartas a:hover {
+  background-color: #bce9e3;
+  border-color: #bce9e3;
+}
+
 .c-cabecera {
   background-color: #ffffff;
   border-color: #bce9e3;
@@ -29878,6 +29894,7 @@ button:hover {
   padding: 30px;
   width: 400px;
   height: 300px;
+  border-radius: 20px;
   text-align: center;
   color: #4a5e56;
   display: -webkit-box;

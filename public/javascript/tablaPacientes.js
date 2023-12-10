@@ -1,8 +1,6 @@
 $(function(){
     const pacientesEnTabla = [];
 
-
-
     //Traemos los pacientes mediante ajax
     $.getJSON("https://localhost:8000/api/paciente", function (data) {
         $.each(data["pacientes"], function (i, v) {

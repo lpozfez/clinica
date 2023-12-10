@@ -1,0 +1,63 @@
+<div class="l-contenedor l-contenedor--consulta" id="nav-consulta"> 
+    <h3>Datos del paciente</h3>
+    <div id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
+        <fieldset>
+            <label for="paciente">Paciente</label>
+            <input name="paciente" id="paciente">
+            <label for="dni">DNI</label>
+            <input type="text" name="dni" id="dni" placeholder="DNI">
+            <button  id="buscar">Buscar</button>
+        </fieldset>
+        <div class="c-medioForm">
+            <label for="seguro">Seguro médico</label>
+            <input type="text" name="seguro" id="seguro">
+            <label for="tipoConsulta">Tipo de consulta</label>
+            <select name="tipoConsulta" id="tipoConsulta"></select>
+        </div>
+        <div class="c-medioForm">
+            <img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
+        </div>
+    </div>
+
+    <h3>Notas médicas</h3>	
+    <div class="l-notas">
+        <div class="l-notas l-notas--conBoton c-notas">
+            <h2>Nueva Nota</h2>
+            <textarea name="notasConsulta" id="notasConsulta" cols="50" rows="15"></textarea>
+            <button class="c-botonForm" id="guardaNota">Guardar Nota</button>
+            <button class="c-botonForm" id="guardaNota">Editar</button>
+        </div>
+        <div class="c-notas" id="notas">
+            <h2>Notas Anteriores</h2>
+            <div id="notasanteriores"></div>
+        </div>
+    </div>
+
+    <h3>Medicación</h3>
+    <form action="{{ path('app_perfil') }}" method="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
+        <div class="c-columna">
+            <fieldset>
+                <label for="medicamento">Medicamento</label>
+                <input type="text" id="medicamento" name="medicamento">
+            </fieldset>
+            <fieldset>
+                <label for="posologia">Posología</label>
+                <textarea name="posologia" id="posologia"  rows="5"></textarea>
+            </fieldset>
+        
+        
+            <fieldset>
+                <label for="suspension">Suspensión</label>
+                <input type="checkbox" name="suspension" id="suspension">
+            </fieldset>
+            <fieldset>
+                <label for="motivo">Motivo</label>
+                <textarea name="motivo" id="motivo"  rows="5"></textarea>
+            </fieldset>
+        </div>
+        <div class="c-columna c-columna--botones">
+            <button id="guardar-consulta" class="c-botonForm" type="submit">Guardar Consulta</button>
+            <button id="cancelar-consulta" class="c-botonForm">Cancelar</button>
+        </div>
+    </form>
+</div>

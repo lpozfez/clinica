@@ -79,9 +79,7 @@ $(function () {
           listado.append(nuevoParrafo);
           notasPrevias.append(listado);
         }
-      ).error ( function (error) {
-        console.error("Error en la solicitud AJAX", error);
-      });
+      );
     }
   }
 
@@ -193,7 +191,7 @@ $(function () {
 
   /**Función para guardar la consuta */
   function guardaConsulta(event){
-    debugger
+    
     event.preventDefault();
 
     //Datos del formulario

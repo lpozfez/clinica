@@ -13,157 +13,37 @@
 			{% if is_granted('IS_AUTHENTICATED_FULLY')%}
 				{# Según los roles mostramos al usuario unas pestañas u otras #}
 				{% for rol in app.user.roles %}
-					<!--Para el rol administrativo-->
-					{% if rol == 'ROLE_ADMINISTRATIVO' %}
-						{#AGENDA#}
-						<div class="tab-pane fade active l-contenedor" id="nav-agenda" role="tabpanel" aria-labelledby="nav-agenda-tab">
-							<div id="calendar"></div>
-						</div>
-						{#PACIENTES#}
-						<div class="tab-pane fade l-contenedor" id="nav-pacientes" role="tabpanel" aria-labelledby="nav-pacientes-tab">pacientes</div>
-					{% else %}
-						<!--Para el rol médico-->
-						{#PASAR CONSULTA#}
-						<div class="l-contenedor l-contenedor--consulta" id="nav-consulta"> 
-							<h3>Datos del paciente</h3>
-							<div id="datosPacienteConsulta" class="c-formulario c-formulario--consulta">
-								<fieldset>
-									<label for="paciente">Paciente</label>
-									<input name="paciente" id="paciente">
-									<label for="dni">DNI</label>
-									<input type="text" name="dni" id="dni" placeholder="DNI">
-									<button  id="buscar">Buscar</button>
-								</fieldset>
-								<div class="c-medioForm">
-									<label for="seguro">Seguro médico</label>
-									<input type="text" name="seguro" id="seguro">
-									<label for="tipoConsulta">Tipo de consulta</label>
-									<select name="tipoConsulta" id="tipoConsulta"></select>
-								</div>
-								<div class="c-medioForm">
-									<img src="{{asset('/imagenes/mujer.png')}}" id="fotoPaciente" alt="">
-								</div>
-							</div>
-
-							<h3>Notas médicas</h3>	
-							<div class="l-notas">
-                                <div class="l-notas l-notas--conBoton c-notas">
-                                    <h2>Nueva Nota</h2>
-                                    <textarea name="notasConsulta" id="notasConsulta" cols="50" rows="15"></textarea>
-                                    <button class="c-botonForm" id="guardaNota">Guardar Nota</button>
-									<button class="c-botonForm" id="guardaNota">Editar</button>
-                                </div>
-                                <div class="c-notas" id="notas">
-                                    <h2>Notas Anteriores</h2>
-									<div id="notasanteriores"></div>
-                                </div>
-							</div>
 					
-							<h3>Medicación</h3>
-							<form action="{{ path('app_perfil') }}" method="post" id="medicacionConsulta" class="c-formulario c-formulario--datosMedicacion">
-								<div class="c-columna">
-									<fieldset>
-										<label for="medicamento">Medicamento</label>
-										<input type="text" id="medicamento" name="medicamento">
-									</fieldset>
-									<fieldset>
-										<label for="posologia">Posología</label>
-										<textarea name="posologia" id="posologia"  rows="5"></textarea>
-									</fieldset>
-								
-								
-									<fieldset>
-										<label for="suspension">Suspensión</label>
-										<input type="checkbox" name="suspension" id="suspension">
-									</fieldset>
-									<fieldset>
-										<label for="motivo">Motivo</label>
-										<textarea name="motivo" id="motivo"  rows="5"></textarea>
-									</fieldset>
-								</div>
-								<div class="c-columna c-columna--botones">
-									<button id="guardar-consulta" class="c-botonForm" type="submit">Guardar Consulta</button>
-									<button id="cancelar-consulta" class="c-botonForm">Cancelar</button>
-								</div>
-							</form>
-						</div>
-						{# FIN PASAR CONSULTA #}
+					{% if rol == 'ROLE_ADMINISTRATIVO' %}
+						{# Para el rol administrativo #}
 						{#AGENDA#}
 						<div class="l-contenedor" id="nav-agenda">
 							<div id="calendar"></div>
+							<div id="dialog" title="Seleccionar Hora"></div>
 						</div>
 
 						{#PACIENTES#}
-						<div class="l-contenedor table-responsive" id="nav-pacientes">
-							<table class="table" id="tablaPacientes">
-								<thead>
-									<tr>
-										<th scope="col">Nombre de paciente</th>
-										<th scope="col">DNI</th>
-										<th scope="col">Seguro</th>
-										<th scope="col">Acción</th>
-										<th scope="col"><button class="btn btn-outline-success"><img src="{{asset('/imagenes/iconos/agregar.svg')}}" id="addParte" class="c-icono"></button></th>
-									</tr>
-								</thead>
-								<tbody id="tBodyPacientes"></tbody>
-							</table>
+						{% include("medico/_tablaPacientes.html.twig") %}
 
-							<!-- Modal de Edición -->
-							<div class="modal modal-md fade h-auto" id="modalEdicion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<p class="modal-title">Editar paciente:</p>
-										</div>
-										<div class="modal-body">
+					{% else %}
+						{# Para el rol médico #}
+						{#PASAR CONSULTA#}
+						{% include("medico/_pasarConsulta.html.twig") %}
 
-										<form id="formularioEdicion" class="text-center">
-											<div class="col-10">
-											<label for="formDni" class="form-label">DNI</label>
-											<input type="text" class="form-control  form-control form-control-sm" id="formDni" readonly>
-											</div>
-											<div class="col-10">
-											<label for="formNombre" class="form-label">Nombre</label>
-											<input type="text" class="form-control  form-control form-control-sm" id="formNombre">
-											</div>
-											<div class="col-10">
-											<label for="" class="form-label">Apellido 1</label>
-											<input type="text" class="form-control  form-control form-control-sm" id="formap1">
-											</div>
-											<div class="col-10">
-											<label for="" class="form-label">Apellido 2</label>
-											<input type="text" class="form-control form-control form-control-sm"  id="formap2">
-											</div>
-											<div class="col-10">
-											<label for="" class="form-label">Tarjeta</label>
-											<input type="text" class="form-control form-control form-control-sm"  id="formtarjeta">
-											</div>
-											<div class="col-10">
-											<label for="formSeguro" class="form-label">Seguro</label>
-											<select name="formSeguro" id="formSeguro"></select>
-											</div>
-											<div class="col-10">
-											<label for="fotoPaciente" class="form-label">Foto</label>
-											<input type="file" name="fotoPaciente" id="formFoto"/>
-											</div>
-											<div class="modal-footer">
-											<button type="submit" class="btn btn-primary">Guardar Cambios</button>
-											</div>
-										</form>
-										</div>
-									</div>
-								</div>
-								</div>
-							</div>
+						{#AGENDA#}
+						<div class="l-contenedor" id="nav-agenda">
+							<div id="calendar"></div>
+							<div id="dialog" title="Seleccionar Hora"></div>
 						</div>
+
+						{#PACIENTES#}
+						{% include("medico/_tablaPacientes.html.twig") %}
 	
-						{#DATOS
-						<div class="tab-pane fade l-contenedor" id="nav-datos" role="tabpanel" aria-labelledby="nav-datos-tab">datos</div>#}
 					{% endif %}
 				{% endfor %}
 
 		</div>
 		{% endif %}
-	</section>
+</section>
 
-{% endblock %}
+	{% endblock %}
